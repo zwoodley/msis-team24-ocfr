@@ -1,5 +1,29 @@
 /* Home Page */
+.left, .right {
+  width: 25%;
+}
 
+.middle {
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.float-left, .float-right{
+  padding-right: 25px;
+  height: 200px;
+}
+
+.float-right{
+  padding-left: 25px;
+  height: 200px;
+  width: 200px;
+}
 
 /* Certifications */
 
