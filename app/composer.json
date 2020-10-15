@@ -1,0 +1,14 @@
+{
+    "name": "iu-msis/project-ocfr-2020",
+    "description": "team 24 ocfr project",
+    "license": "private",
+    "authors": [{
+        "name": "Zach Woodley"
+    }],
+    "require": {
+      "ramsey/uuid": "^4.1"
+    },
+    "autoload": {
+        "classmap": ["class/DbConnection.php"]
+    }
+}
