@@ -76,73 +76,57 @@
     </nav>
     <div class="container-fluid">
           <h1 class="page-header">Recent Expirees</h1>
-
+          <div id="reportExp">
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="https://www.discovery.ca/get-bm-attachment/637078678221151284/27f4971e-bd77-48dd-b980-33a1f8f0aed8/200/200" width="200" height="200" class="img-fluid">
-              <h4>Santina Freely</h4>
+              <img src="https://static.thenounproject.com/png/1926276-200.png" width="200" height="200" class="img-fluid">
+              <h4>Hagan	Morsey</h4>
               <span class="text-muted">Start date: 04/02/1998</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b6cdd296-bc65-4313-91e5-f6e886baecad/d28dlnx-07a30078-4ac5-4e1a-8fd4-1f9d0b7bbfe2.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvYjZjZGQyOTYtYmM2NS00MzEzLTkxZTUtZjZlODg2YmFlY2FkXC9kMjhkbG54LTA3YTMwMDc4LTRhYzUtNGUxYS04ZmQ0LTFmOWQwYjdiYmZlMi5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DmSXpECxkMOEgUmoXTnX9Z3w08bSsUEhaW_K32h-xE0" width="200" height="200" class="img-fluid">
-              <h4>John Lennon</h4>
+              <img src="https://static.thenounproject.com/png/1926276-200.png" width="200" height="200" class="img-fluid">
+              <h4>Jamaal	Mielnik</h4>
               <span class="text-muted">Start date: 08/26/2001</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="https://pbs.twimg.com/media/D802dKLXYAAJXFw.jpg" width="200" height="200" class="img-fluid">
-              <h4>Marshall Mathers</h4>
+              <img src="https://static.thenounproject.com/png/1926276-200.png" width="200" height="200" class="img-fluid">
+              <h4>Marven	Pridham</h4>
               <span class="text-muted">Start date: 03/11/2004</span>
             </div>
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="https://straightfromthea.com/wp-content/uploads/2015/10/Drake-Fire-.png" width="200" height="200" class="img-fluid">
-              <h4>Aubrey Graham</h4>
+              <img src="https://static.thenounproject.com/png/1926276-200.png" width="200" height="200" class="img-fluid">
+              <h4>Giustino	Kemmish</h4>
               <span class="text-muted">Start date: 04/19/2004</span>
             </div>
           </div>
 
           <h2 class="sub-header">Expired Certificates</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Certification</th>
-                  <th>Expiration Date</th>
-                  <th>Length of Expiration</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1001</td>
-                  <td>Santina Freely</td>
-                  <td>Hazmat Incident Commander</td>
-                  <td>10/2/2020</td>
-                  <td>7 days</td>
-                </tr>
-                <tr>
-                  <td>1002</td>
-                  <td>John Lennon</td>
-                  <td>Rescue Technician</td>
-                  <td>10/3/2020</td>
-                  <td>6 days</td>
-                </tr>
-                <tr>
-                  <td>1003</td>
-                  <td>Marshall Mathers</td>
-                  <td>Fire Instructor I</td>
-                  <td>10/7/2020</td>
-                  <td>2 days</td>
-                </tr>
-                <tr>
-                  <td>1004</td>
-                  <td>Aubrey Graham</td>
-                  <td>Fire Inspector II</td>
-                  <td>10/7/2020</td>
-                  <td>2 days</td>
-                </tr>
-              </tbody>
-            </table>
+
+
+                <table id="booklist" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Certification</th>
+                      <th>Agency</th>
+                      <th>Length of Expiration</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+              <tr v-for="m in mbrList" v-on:click="activePt = m">
+                <td>{{ 1000 + m.cID }}</td>
+                <td>{{ m.fname }}</td>
+                <td>{{ m.lname }}</td>
+                <td>{{ m.certName }}</td>
+                <td>{{ m.certAgency }}</td>
+                <td>{{ m.certExp }} years</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            <center><a href="#" class="myButton">Export</a></center>
           </div>
         </div>
       </div>
@@ -150,5 +134,10 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/export.app.js"></script>
+    <script src='js/tablesort.min.js'></script>
+    <script>new Tablesort(document.getElementById('booklist'));</script>
   </body>
 </html>
