@@ -1,0 +1,14 @@
+{
+    "name": "msis/OCFR Project",
+    "description": "DNS Class Project",
+    "license": "private",
+    "authors": [{
+        "name": "Bayasa Batsaikhan, Alfred Johnson, Drake Lamp, Zachary Woodley"
+    }],
+    "require": {
+        "ramsey/uuid": "^4.1"
+    },
+    "autoload": {
+        "classmap": ["class/DbConnection.php"]
+    }
+}
