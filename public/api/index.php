@@ -6,7 +6,11 @@ require 'common.php';
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
+<<<<<<< Updated upstream:public/api/index.php
 $sql = 'SELECT * FROM Comments';
+=======
+$sql = 'SELECT * FROM person';
+>>>>>>> Stashed changes:app/public/api/members/index.php
 $vars = [];
 
 if (isset($_GET['id'])) {
