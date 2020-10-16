@@ -11,10 +11,7 @@ var app = new Vue({
         lname: "",
         certName: "",
         certAgency: "",
-        certExp: "",
-        radioNum: "",
-        mainDepartment: "",
-        email: "",
+        certExp: ""
       }
     }
   },
