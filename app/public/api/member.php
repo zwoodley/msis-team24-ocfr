@@ -8,7 +8,7 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 $sql = 'SELECT personID, fname, lname, radioNum, mainDepartment, email
         FROM person
-        ORDER BY personID';
+        ORDER BY radioNum, mainDepartment';
 $vars = [];
 
 //if (isset($_GET['guid'])) {

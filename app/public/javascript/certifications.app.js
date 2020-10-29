@@ -11,12 +11,12 @@ var app = new Vue({
         lname: "",
         certName: "",
         certAgency: "",
-        certExp: ""
+        certExp: "",
       }
     }
   },
   created() {
-    fetch("api/records/certification.php")
+    fetch("api/records/cert.php")
     .then( response => response.json() )
     .then( json => {
       this.mbrList = json;
