@@ -6,8 +6,8 @@ require 'common.php';
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$sql = 'SELECT m.certificationID as cID, fname, lname,  certName, certAgency, certExp
-        FROM person p join certification c join memberCert m on (p.personID=m.personID) and (c.certificationID=m.certificationID)
+$sql = 'SELECT certificationID as cID, certName, certAgency, certExp
+        FROM certification
         ORDER BY cID';
 $vars = [];
 
