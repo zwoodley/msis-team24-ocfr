@@ -16,7 +16,7 @@ var app = new Vue({
     }
   },
   created() {
-    fetch("api/records/export.php")
+    fetch("api/records/certification.php")
     .then( response => response.json() )
     .then( json => {
       this.mbrList = json;
