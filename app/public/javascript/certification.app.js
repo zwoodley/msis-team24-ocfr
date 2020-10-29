@@ -61,12 +61,12 @@ CertApp = new Vue({
                     this.editCert = this.newCertData();
                 });
             console.log("Creating (POSTing)...!");
-            console.log(this.addCert);
+            console.log(this.editCert);
         },
 
         newCertData() {
             return {
-                certificationID: "",
+                cID: "",
                 certName: "",
                 certAgency: "",
                 certExp: "",
