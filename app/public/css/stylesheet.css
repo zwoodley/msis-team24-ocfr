@@ -1,31 +1,34 @@
 /* Home Page */
-.left, .right {
-  width: 25%;
+
+.left,
+.right {
+    width: 25%;
 }
 
 .middle {
-  width: 50%;
+    width: 50%;
 }
+
 
 /* Clear floats after the columns */
+
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
 
-.float-left, .float-right{
-  padding-right: 25px;
-  height: 200px;
+.float-left,
+.float-right {
+    padding-right: 25px;
+    height: 200px;
 }
 
-.float-right{
-  padding-left: 25px;
-  height: 200px;
-  width: 200px;
+.float-right {
+    padding-left: 25px;
+    height: 200px;
+    width: 200px;
 }
-
-/* Certifications */
 
 
 /* Certification List */
@@ -41,6 +44,11 @@ table.dataTable thead .sorting_desc:before,
 table.dataTable thead .sorting_desc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:before {
     bottom: .5em;
+}
+
+#certifications {
+    background-color: darkred;
+    color: white;
 }
 
 

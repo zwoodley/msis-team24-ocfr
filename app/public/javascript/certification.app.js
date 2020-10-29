@@ -2,19 +2,19 @@ CertApp = new Vue({
     el: '#certifications',
     data: {
         certifications: [{
-            certificationID: "",
+            cID: "",
             certName: "",
             certAgency: "",
             certExp: "",
         }],
         addCert: {
-            certificationID: "",
+            cID: "",
             certName: "",
             certAgency: "",
             certExp: "",
         },
         editCert: {
-            certificationID: "",
+            cID: "",
             certName: "",
             certAgency: "",
             certExp: "",
