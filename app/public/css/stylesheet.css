@@ -51,8 +51,26 @@ table.dataTable thead .sorting_desc_disabled:before {
     color: white;
 }
 
+#deleteCert {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    padding: 10px;
+}
 
-/* Members */
+#deleteCert:hover {
+    background-color: darkred;
+    color: white;
+}
 
+#editCert {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    padding: 10px;
+}
 
-/* Reports */
+#editCert:hover {
+    background-color: darkred;
+    color: white;
+}
