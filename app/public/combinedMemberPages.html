@@ -7,169 +7,290 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <style>
-    #newMembers{font-size:1;}
+    #newMembers{font-size:1;},
+    [v-cloak] {
+      display: none;
+    },
+    .edit {
+      display: none;
+    },
+    .editing .edit {
+      display: block
+    },
+    .editing .view {
+      display: none;
+    }
     </style>
 
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row" id="">
-        <div id="newMembers" class="col-md-3">
+
+    <div class="container-fluid" id="memberPage">
+      <div class="row" >
+        <div class="col-md-3">
 
           <div style="text-align: center;">
           <h3>Add New Member</h3>
           </div>
 
-          <div style="font-size: 13px;" class="col-12">
-            <form>
+          <div style="font-size: 13px;" class="col-12" id="memberPageadd">
+            <form method="post" v-on:submit.prevent="handleNewMember">
               <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="InputMemberId">Member ID</label>
-                  <input type="text" class="form-control" id="inputMemberId" placeholder="00">
+                  <input type="text" v-model="addMember.personID"class="form-control" id="inputMemberId" placeholder="00">
                 </div>
                 <div class="form-group col-md-4">
                   <label for="inputFirstName">First Name</label>
-                  <input type="text" class="form-control" id="inputFirstName" placeholder="John">
+                  <input type="text" v-model="addMember.fname" class="form-control" id="inputFirstName" placeholder="John">
                 </div>
                 <div class="form-group col-md-4">
                   <label for="inputLastName">Last Name</label>
-                  <input type="text" class="form-control" id="inputLastName" placeholder="Doe">
+                  <input type="text" v-model="addMember.lname"class="form-control" id="inputLastName" placeholder="Doe">
                 </div>
               </div>
 
               <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-8">
                   <label for="inputDOB">Date of Birth</label>
-                  <input type="date" class="form-control" id="inputDOB" placeholder="00">
+                  <input type="date" v-model="addMember.dob"class="form-control" id="inputDOB" placeholder="00">
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                   <label for="inputGender">Gender</label>
-                  <input type="text" class="form-control" id="inputGender" placeholder="">
+                  <input type="text" v-model="addMember.gender" class="form-control" id="inputGender" placeholder="">
                 </div>
               </div>
               <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputPhoneNum">Phone Number</label>
-                  <input type="tel" class="form-control" id="inputPhoneNum" placeholder="1234567890">
-                </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                   <label for="inputEmail">Email</label>
-                  <input type="email" class="form-control" id="inputEmail" placeholder="jdoe@ocfr.org">
+                  <input type="email" v-model="addMember.email"class="form-control" id="inputEmail" placeholder="jdoe@ocfr.org">
+                </div>
+              </div>
+
+              <div class="form-row ">
+                <div class="form-group col-md-12">
+                  <label for="inputCell">Cell Phone</label>
+                  <input type="tel" v-model="addMember.cellPhone"class="form-control" id="inputCell" placeholder="1234567890">
+                </div>
+              </div>
+
+              <div class="form-row ">
+                <div class="form-group col-md-12">
+                  <label for="inputAddress">Work Phone</label>
+                  <input type="tel" v-model="addMember.workPhone"class="form-control" id="inputAddress" placeholder="1234567890">
+                </div>
+              </div>
+
+              <div class="form-row ">
+                <div class="form-group col-md-12">
+                  <label for="inputAddress">Home Phone</label>
+                  <input type="tel" v-model="addMember.homePhone"class="form-control" id="inputAddress" placeholder="1234567890">
                 </div>
               </div>
 
               <div class="form-row ">
                 <div class="form-group col-md-12">
                   <label for="inputAddress">Address</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                </div>
-                <div class="form-group col-md-12">
-                  <label for="inputAddress2">Address 2</label>
-                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                  <input type="text" v-model="addMember.addStreet"class="form-control" id="inputAddress" placeholder="1234 Main St">
                 </div>
               </div>
 
               <div class="form-row ">
                 <div class="form-group col-md-4">
                   <label for="inputCity">City</label>
-                  <input type="text" class="form-control" id="inputCity" placeholder="Monroe">
+                  <input type="text" v-model="addMember.addCity" class="form-control" id="inputCity" placeholder="Monroe">
                 </div>
                 <div class="form-group col-md-4">
                   <label for="inputState">State</label>
-                  <input type="text" class="form-control" id="inputState" placeholder="GA">
+                  <input type="text" v-model="addMember.addState" class="form-control" id="inputState" placeholder="GA">
                 </div>
                 <div class="form-group col-md-4">
                   <label for="inputZip">Zip</label>
-                  <input type="text" class="form-control" id="inputZip" placeholder="30655">
+                  <input type="text" v-model="addMember.addZip" class="form-control" id="inputZip" placeholder="30655">
                 </div>
               </div>
 
               <div class="form-row ">
-                <div class="form-group col-md-4">
-                  <label for="inputPosition">Position</label>
-                  <input type="text" class="form-control" id="inputPosition" placeholder="Chief">
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="inputStartDate">Start Date</label>
-                  <input type="text" class="form-control" id="inputStartDate" placeholder="01/01/1900">
-                </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                   <label for="inputRadioNum">Radio #</label>
-                  <input type="text" class="form-control" id="inputRadioNum" placeholder="0000">
+                  <input type="text" v-model="addMember.radioNum" class="form-control" id="inputRadioNum" placeholder="0000">
                 </div>
               </div>
 
-              <div class="form-group">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="gridCheck">
-                  <label class="form-check-label" for="gridCheck">
-                  Check if member is active
-                  </label>
+              <div class="form-row ">
+                <div class="form-group col-md-6">
+                  <label for="inputPos">Position</label>
+                  <input type="text" v-model="addMember.position" class="form-control" id="inputPos" placeholder="">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputDOB">Main Dep.</label>
+                  <input type="number" v-model="addMember.mainDepartment"class="form-control" id="inputDOB" placeholder="00">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputGender">Secondary Dep.</label>
+                  <input type="number" v-model="addMember.secondaryDepartment" class="form-control" id="inputGender" placeholder="">
+                </div>
+              </div>
+
+              <div class="form-row ">
+                <div class="form-group col-md-12">
+                  <label for="inputAddress">Start Date</label>
+                  <input type="Date" v-model="addMember.startDate"class="form-control" id="inputAddress" placeholder="01/01/1900">
+                </div>
+              </div>
+
+              <div class="form-row ">
+                <div class="form-group col-md-12">
+                  <label for="inputAddress">Active Status</label>
+                  <input type="number" v-model="addMember.isActive" class="form-control" id="inputAddress" placeholder="1 if active, 0 if not">
                 </div>
               </div>
               <button type="submit" class="btn btn-primary">Add Member</button>
             </form>
           </div>
-
-
         </div>
-
         <div class="col-6">
           <div style="text-align: center;">
           <h1>Member List</h1>
         </div>
           <div style="overflow-x:auto; font-size: 13px; padding:10px">
-          <div class="row">
-            <table id="memberList" class="table table-striped">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Member ID</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">DOB</th>
-          <th scope="col">Gender</th>
-          <th scope="col">Phone Number</th>
-          <th scope="col">Email</th>
-          <th scope="col">Address</th>
-          <th scope="col">Address 2</th>
-          <th scope="col">City</th>
-          <th scope="col">State</th>
-          <th scope="col">Zip</th>
-          <th scope="col">Position</th>
-          <th scope="col">Start Date</th>
-          <th scope="col">Active?</th>
-          <th scope="col">Radio Number</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>1</td>
-          <td>John</td>
-          <td>Doe</td>
-          <td>01/01/1900</td>
-          <td> Male</td>
-          <td>1234567890</td>
-          <td>jdoe@aol.com</td>
-          <td>123 north st</td>
-          <td> </td>
-          <td>Bloomington</td>
-          <td>IN</td>
-          <td>47408</td>
-          <td>Chief</td>
-          <td>01/01/1900</td>
-          <td>Yes</td>
-          <td>0001</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-        </tr>
-      </tbody>
-    </table>
+          <div class="row" id="memberTable" >
+           <table id="memberTable" class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Position</th>
+                    <th>Start Date</th>
+                    <th>Active?</th>
+                    <th>Radio Number</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="m in members" :class="{editing: m == editedMember}" v-cloak id="memberPage">
+
+                    <td>
+                      <div class="view">
+                        {{m.personID}}
+                      </div>
+                      <div class="edit">
+                        <input type="text" v-model="members.personID"/>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class="view">
+                        {{m.fname}}
+                      </div>
+                      <div class="edit">
+                        <input type="text" v-model="members.fname"/>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="view">
+                        {{m.lname}}
+                      </div>
+                      <div class="edit">
+                        <input type="text" v-model="members.lname"/>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="view">
+                        {{m.position}}
+                      </div>
+                      <div class="edit">
+                        <input type="text" v-model="members.position"/>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="view">
+                        {{m.startDate}}
+                      </div>
+                      <div class="edit">
+                        <input type="text" v-model="members.startDate"/>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="view">
+                        {{m.isActive}}
+                      </div>
+                      <div class="edit">
+                        <input type="text" v-model="members.isActive"/>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="view">
+                        {{m.radioNum}}
+                      </div>
+                      <div class="edit">
+                        <input type="text" v-model="members.radioNum"/>
+                      </div>
+                    </td>
+                    <td>
+                    <div class="view">
+                      <button @click="editData">edit</button>
+                    </div>
+                    <div class="edit">
+                      <button @click="saveData(members)">save</button>
+                    </div>
+                  </td>
+                  <td><button>delete</button></td>
+
+          <!--
+                    <td>{{m.personID}}</td>
+                    <td>{{m.fname}}</td>
+                    <td>{{m.lname}}</td>
+                    <td>{{m.position}}</td>
+                    <td>{{m.startDate}}</td>
+                    <td>{{m.isActive}}</td>
+                    <td>{{m.radioNum}}</td> -->
+                  </tr>
+                </tbody>
+
+           </table>
+
+  <!--        <table>
+          <thead>
+            <th>Name</th>
+            <th>Email</th>
+            <th></th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr v-for="user in users" :class="{editing: user == editedUser}" v-cloak>
+              <td>
+                <div class="view">
+                  {{user.name}}
+                </div>
+                <div class="edit">
+                  <input type="text" v-model="user.name"/>
+                </div>
+              </td>
+              <td>
+                <div class="view">
+                  {{user.email}}
+                </div>
+                <div class="edit">
+                  <input type="text" v-model="user.email"/>
+                </div>
+              </td>
+              <td>
+                <div class="view">
+                  <button @click="editData(user)">edit</button>
+                </div>
+                <div class="edit">
+                  <button @click="saveData(user)">save</button>
+                </div>
+              </td>
+              <td><button>delete</button></td>
+            </tr>
+          </tbody>
+        </table> -->
+
   </div>
   </div>
   </div>
@@ -178,111 +299,110 @@
           <div style="text-align: center;">
           <h3>Edit A Member</h3>
         </div>
-          <form>
+        <div style="font-size: 13px;" class="col-12" id="memberPageadd">
+          <form method="post" v-on:submit.prevent="handleNewMember">
             <div class="form-row">
               <div class="form-group col-md-4">
-                <label for="inputAddress">Member ID</label>
-                <input type="number" class="form-control" id="inputMemberId" placeholder="00">
+                <label for="InputMemberId">Member ID</label>
+                <input type="text" v-model="members.personID"class="form-control" id="inputMemberId" placeholder="00">
               </div>
               <div class="form-group col-md-4">
-                <label for="inputEmail4">First Name</label>
-                <input type="text" class="form-control" id="inputFName" placeholder="John">
+                <label for="inputFirstName">First Name</label>
+                <input type="text" v-model="addMember.fname" class="form-control" id="inputFirstName" placeholder="John">
               </div>
               <div class="form-group col-md-4">
-                <label for="inputPassword4">Last Name</label>
-                <input type="text" class="form-control" id="inputLName" placeholder="Doe">
+                <label for="inputLastName">Last Name</label>
+                <input type="text" v-model="addMember.lname"class="form-control" id="inputLastName" placeholder="Doe">
               </div>
             </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputAddress">Date of Birth</label>
-                <input type="date" class="form-control" id="inputDob" placeholder="01/01/1900">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputEmail4">Gender</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="Jdoe@ocfr.org">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputCity">Phone Number</label>
-                <input type="tel" class="form-control" id="inputPhoneNum" placeholder ="123-456-7890">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputState">Email</label>
-                <input type="text" class="form-control" id="inputEmail">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-12">
-                <label for="inputCity">Address</label>
-                <input type="text" class="form-control" id="inputCity">
-              </div>
-              <div class="form-group col-md-12">
-                <label for="inputState">Address line 2</label>
-                <input type="text" class="form-control" id="inputZip">
-              </div>
-            </div>
-          <div class="form-row ">
-            <div class="form-group col-md-4">
-              <label for="inputCity">City</label>
-              <input type="text" class="form-control" id="inputCity">
-            </div>
-            <div class="form-group col-md-4">
-              <label for="inputState">State</label>
-              <input type="text" class="form-control" id="inputZip">
-            </div>
-            <div class="form-group col-md-4">
-              <label for="inputZip">Zip</label>
-              <input type="text" class="form-control" id="inputZip">
-            </div>
-          </div>
-          <div class="form-row ">
-            <div class="form-group col-md-4">
-              <label for="inputCity">Position</label>
-              <input type="text" class="form-control" id="inputCity">
-            </div>
-            <div class="form-group col-md-4">
-              <label for="inputState">Start Date</label>
-              <input type="text" class="form-control" id="inputZip">
-            </div>
-            <div class="form-group col-md-2">
-              <label for="inputZip">Radio #</label>
-              <input type="text" class="form-control" id="inputZip">
-            </div>
-          </div>
 
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                Check if member is active
-              </label>
+            <div class="form-row">
+              <div class="form-group col-md-8">
+                <label for="inputDOB">Date of Birth</label>
+                <input type="date" class="form-control" id="inputDOB" placeholder="00">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputGender">Gender</label>
+                <input type="text" class="form-control" id="inputGender" placeholder="">
+              </div>
             </div>
-          </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputPhoneNum">Phone Number</label>
+                <input type="tel" class="form-control" id="inputPhoneNum" placeholder="1234567890">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="jdoe@ocfr.org">
+              </div>
+            </div>
 
-          <button type="button" class="btn btn-warning">Update Member Info</button>
-          <button type="button" class="btn btn-danger">Delete Member</button>
+            <div class="form-row ">
+              <div class="form-group col-md-12">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+              </div>
+            </div>
+
+            <div class="form-row ">
+              <div class="form-group col-md-4">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="inputCity" placeholder="Monroe">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <input type="text" class="form-control" id="inputState" placeholder="GA">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputZip">Zip</label>
+                <input type="text" class="form-control" id="inputZip" placeholder="30655">
+              </div>
+            </div>
+
+            <div class="form-row ">
+              <div class="form-group col-md-6">
+                <label for="inputRadioNum">Radio #</label>
+                <input type="text" class="form-control" id="inputRadioNum" placeholder="0000">
+              </div>
+            </div>
+
+            <div class="form-row ">
+              <div class="form-group col-md-12">
+                <label for="">Position</label>
+                <input type="text" class="form-control" id="" placeholder="Chief">
+              </div>
+            </div>
+
+            <div class="form-row ">
+              <div class="form-group col-md-12">
+                <label for="inputAddress">Start Date</label>
+                <input type="Date" class="form-control" id="inputAddress" placeholder="01/01/1900">
+              </div>
+            </div>
+
+            <div class="form-row ">
+              <div class="form-group col-md-12">
+                <label for="inputAddress">Active Status</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1 if active, 0 if not">
+              </div>
+            </div>
+            <button type="button" class="btn btn-warning">Update Member Info</button>
+            <button type="button" class="btn btn-danger">Delete Member</button>
+          </form>
+        </div>
+
+
 
         </form>
         </div>
       </div>
     </div>
 
-    <script>
-      $(document).ready(function () {
-      $('#memberList').DataTable({
-        "scrollX": true
-      });
-      $('.dataTables_length').addClass('bs-select');
-      });
-    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="js/index.app.js"></script>
+    <script src="javascript/member.app.js"></script>
   </body>
 </html>
