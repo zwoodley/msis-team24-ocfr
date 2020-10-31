@@ -1,5 +1,5 @@
 var app = new Vue({
-  el: '#reportExp',
+  el: '#certificationDetailed',
   data: {
     mbrList: [],
     dropdown_menu_one:{
