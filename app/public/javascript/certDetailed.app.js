@@ -2,7 +2,7 @@ var app = new Vue({
   el: '#reportExp',
   data: {
     mbrList: [],
-    choose:{
+    dropdown_menu_one:{
       certification:''
     }
   },
