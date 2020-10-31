@@ -21,8 +21,8 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Members
-  </a>
+                  Members
+                </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="memberlist.html">View Member List</a>
                     <a class="dropdown-item" href="newMember.html">Add a Member</a>
@@ -32,41 +32,40 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Certifications
-  </a>
-  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <a class="dropdown-item" href="certificationList.html">View Certification List</a>
-    <a class="dropdown-item" href="newCertification.html">Add a Certification</a>
-    <a class="dropdown-item" href="editCertification.html">Edit Certification List</a>
-    <a class="dropdown-item" href="certificationDetailed.html">View Detailed Certification Record</a>
-  </div>
-</li>
-<li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Reports
-  </a>
-  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <a class="dropdown-item" href="reportExp.html">Expired Certifications</a>
-    <a class="dropdown-item" href="reportMSR.html">Members by Radio # and Station #</a>
-  </div>
-</li>
-</ul>
+                  Certifications
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="certificationList.html">View Certification List</a>
+                  <a class="dropdown-item" href="newCertification.html">Add a Certification</a>
+                  <a class="dropdown-item" href="editCertification.html">Edit Certification List</a>
+                  <a class="dropdown-item" href="certificationDetailed.html">View Detailed Certification Record</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Reports
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="reportExp.html">Expired Certifications</a>
+                  <a class="dropdown-item" href="reportMSR.html">Members by Radio # and Station #</a>
+                </div>
+              </li>
+              </ul>
 
-    </div>
-  </nav>
-    </nav>
+            </div>
+          </nav>
     <div class="container-fluid">
           <h1 class="page-header">Detailed Certification Record</h1>
 
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Select a Certification
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-            </div>
-          </div><br>
+          <div class = "dropdown_menu_one">
+            <p> Select a Certification: </p>
+              <select v-model = "dropdown_menu_one.certification">
+                <option value = ""> All Certifications </option>
+                <option v-bind = "m in mbrList"> {{member.certName}} </option>
+              </select>
+          </div>
 
+          <br>
           <div id="reportExp">
 
                 <table id="memlist" class="table table-striped">
@@ -81,7 +80,7 @@
                     </tr>
                   </thead>
                   <tbody>
-              <tr v-for="m in mbrList" v-on:click="activePt = m">
+              <tr v-for="m in mbrList" v-on:click="activePt = m" v-if = "dropdown_menu_one.certification = '' || dropdown_menu_one.certification == member.certName">
 	              <td>{{ 1000 + m.cID }}</td>
                 <td>{{ m.fname }}</td>
                 <td>{{ m.lname }}</td>

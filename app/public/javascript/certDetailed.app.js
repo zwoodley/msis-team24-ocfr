@@ -2,6 +2,9 @@ var app = new Vue({
   el: '#reportExp',
   data: {
     mbrList: [],
+    choose:{
+      certification:''
+    }
   },
   methods: {
     mbrData() {
