@@ -1,5 +1,5 @@
 var app = new Vue({
-  el: '#reportExp',
+  el: '#reportMem',
   data: {
     mbrList: [],
   },
