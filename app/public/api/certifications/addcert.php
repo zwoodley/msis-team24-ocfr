@@ -12,12 +12,12 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'INSERT INTO certification (cID, certName, certAgency, certExp)
+  'INSERT INTO certification (certificationID, certName, certAgency, certExp)
   VALUES (?, ?, ?, ?)'
 );
 
 $stmt->execute([
-  $_POST['cID'],
+  $_POST['certificationID'],
   $_POST['certName'],
   $_POST['certAgency'],
   $_POST['certExp']
@@ -30,4 +30,4 @@ $stmt->execute([
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 header('HTTP/1.1 303 See Other');
-header('Location: ../certifications/?cID=' .$_POST['cID']);
+header('Location: ../certifications/?certificationID=' .$_POST['certificationID']);

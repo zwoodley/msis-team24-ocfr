@@ -11,12 +11,17 @@ $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
-$stmt = $db->query(
-  'DELETE FROM certification WHERE certificationID = ?'
+$stmt = $db->prepare(
+  'UPDATE certification 
+  SET certName = ?,
+  WHERE certificationID = ?'
 );
 
 $stmt->execute([
   $_POST['certificationID'],
+  $_POST['certName'],
+  $_POST['certAgency'],
+  $_POST['certExp']
 ]);
 
 // If needed, get auto-generated PK from DB

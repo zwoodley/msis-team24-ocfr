@@ -6,9 +6,9 @@ require 'common.php';
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$sql = 'SELECT cID, certName, certAgency, certExp
+$sql = 'SELECT certificationID, certName, certAgency, certExp
         FROM certification
-        ORDER BY cID';
+        ORDER BY certificationID';
 $vars = [];
 
 //if (isset($_GET['guid'])) {
