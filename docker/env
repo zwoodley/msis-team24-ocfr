@@ -1,0 +1,4 @@
+MYSQL_DATABASE=OCFR
+MYSQL_HOST=ocfr.c44qcjanmggp.us-east-1.rds.amazonaws.com
+MYSQL_USER=admin
+MYSQL_PASSWORD=Password

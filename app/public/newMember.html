@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+        <title>Member</title>
+    </head>
+
+    <body>
+    <title>Member</title>
+
+    <div id="memberPage">
+      <form method="post" v-on:submit.prevent="handleNewMemberForm">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="newMemberMemberId">Member ID</label>
+            <input type="text" v-model="newMemberForm.MemberId" class="form-control" id="MemberID" placeholder="00">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="newMemberFirstName">First Name</label>
+            <input type="text" v-model="newMemberForm.FirstName" class="form-control" id="FirstName" placeholder="John">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="newMemberLastName">Last Name</label>
+            <input type="text" v-model="newMemberForm.LastName" class="form-control" id="LastName" placeholder="Doe">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="newMemberDOB">Date of Birth</label>
+            <input type="text" v-model="newMemberForm.DOB"class="form-control" id="DOB" placeholder="00">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="newMemberGender">Gender</label>
+            <input type="text" v-model="newMemberForm.Gender" class="form-control" id="Gender" placeholder="John">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="newMemberPhoneNumber">Phone Number</label>
+            <input type="tel" v-model="newMemberForm.PhoneNumber" class="form-control" id="City">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="newMemberEmail">Email</label>
+            <input type="email" v-model="newMemberForm.Email" class="form-control" id="Zip">
+          </div>
+        </div>
+        <div class="form-group col-md-12">
+          <label for="newMemberAddress">Address</label>
+          <input type="text" v-model="newMemberForm.Address" class="form-control" id="Address" placeholder="1234 Main St">
+        </div>
+        <div class="form-row col-md-12">
+          <label for="newMemberAddress2">Address 2</label>
+          <input type="text" v-model="newMemberForm.Address2" class="form-control" id="Address2" placeholder="Apartment, studio, or floor">
+        </div class="form-row">
+
+        <div class="form-row ">
+          <div class="form-group col-md-4">
+            <label for="newMemberCity">City</label>
+            <input type="text" v-model="newMemberForm.City" class="form-control" id="City">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="newMemberState">State</label>
+            <input type="text" v-model="newMemberForm.State" class="form-control" id="State">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="newMemberZip">Zip</label>
+            <input type="number" v-model="newMemberForm.Zip" class="form-control" id="Zip">
+          </div>
+        </div>
+
+        <div class="form-row ">
+          <div class="form-group col-md-4">
+            <label for="newMemberPosition">Position</label>
+            <input type="text" v-model="newMemberForm.Position" class="form-control" id="Position">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="newMemberStartDate">Start Date</label>
+            <input type="date" v-model="newMemberForm.StartDate" class="form-control" id="StartDate">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="newMemberRadioNumber">Radio #</label>
+            <input type="number" v-model="newMemberForm.RadioNumber"class="form-control" id="RadioNumber">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="newMemberActiveStatus">
+            Check if member is active
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Member</button>
+      </form>
+    </div>
+
+    <div v-for="member in memberList" v-on:click="activeMember = member">
+    <span class="lastName">{{ member.lastName }}</span>,
+    <span clas="firstName">{{ member.firstName }}</span>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+{
+    "name": "zwoodley/msis-team24-ocfr",
+    "description": "Final group project",
+    "license": "private",
+    "authors": [{
+        "name": "Tom Gregory, Mambas(24)"
+    }],
+    "require": {
+      "ramsey/uuid": "^4.1"
+    },
+    "autoload": {
+        "classmap": ["class/DbConnection.php"]
+    }
+}

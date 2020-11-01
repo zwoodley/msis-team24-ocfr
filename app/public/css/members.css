@@ -1,0 +1,17 @@
+
+h1 {font-style: italic;
+  }
+  
+#newMembers{font-size:1;}
+
+.edit {
+  display: none;
+}
+
+.editing .edit {
+  display: block
+}
+
+.editing .view {
+  display: none;
+}
