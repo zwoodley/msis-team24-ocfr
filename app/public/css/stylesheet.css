@@ -45,14 +45,3 @@ table.dataTable thead .sorting_desc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:before {
     bottom: .5em;
 }
-
-input {
-    border: none;
-    background-color: white;
-    color: black;
-}
-
-table {
-    background-color: darkred;
-    color: white;
-}
