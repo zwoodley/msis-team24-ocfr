@@ -73,8 +73,8 @@ var app = new Vue({
     methods: {
   //    saveData () {}, needs to be a post//
   editData () {
-      this.beforEditCache = this.m,
-      this.editedMember = this.m
+      this.beforEditCache = this.members,
+      this.editedMember = this.members
       },
   handleNewMember( evt ){
     evt.preventDefault();

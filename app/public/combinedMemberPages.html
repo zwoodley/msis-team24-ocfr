@@ -8,9 +8,7 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <style>
     #newMembers{font-size:1;},
-    [v-cloak] {
-      display: none;
-    },
+
     .edit {
       display: none;
     },
@@ -178,7 +176,7 @@
                         {{m.personID}}
                       </div>
                       <div class="edit">
-                        <input type="text" v-model="members.personID"/>
+                        <input type="text" v-model="m.personID"/>
                       </div>
                     </td>
 
@@ -187,7 +185,7 @@
                         {{m.fname}}
                       </div>
                       <div class="edit">
-                        <input type="text" v-model="members.fname"/>
+                        <input type="text" v-model="m.fname"/>
                       </div>
                     </td>
                     <td>
@@ -195,7 +193,7 @@
                         {{m.lname}}
                       </div>
                       <div class="edit">
-                        <input type="text" v-model="members.lname"/>
+                        <input type="text" v-model="m.lname"/>
                       </div>
                     </td>
                     <td>
@@ -211,7 +209,7 @@
                         {{m.startDate}}
                       </div>
                       <div class="edit">
-                        <input type="text" v-model="members.startDate"/>
+                        <input type="text" v-model="m.startDate"/>
                       </div>
                     </td>
                     <td>
@@ -219,7 +217,7 @@
                         {{m.isActive}}
                       </div>
                       <div class="edit">
-                        <input type="text" v-model="members.isActive"/>
+                        <input type="text" v-model="m.isActive"/>
                       </div>
                     </td>
                     <td>
@@ -227,7 +225,7 @@
                         {{m.radioNum}}
                       </div>
                       <div class="edit">
-                        <input type="text" v-model="members.radioNum"/>
+                        <input type="text" v-model="m.radioNum"/>
                       </div>
                     </td>
                     <td>
