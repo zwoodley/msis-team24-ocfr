@@ -6,14 +6,14 @@ require 'common.php';
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$sql = 'SELECT personID,fname,lname,position,startDate,isActive,radioNum FROM person';
+$sql = 'SELECT personID,fname,lname,position,startDate,isActive,radioNum,dob,gender,addStreet,addCity,addState,addZip,email,cellPhone,workPhone,homePhone,mainDepartment,secondaryDepartment FROM person';
 $vars = [];
 
-if (isset($_GET['pk'])) {
+//if (isset($_GET['pk'])) {
   // This is an example of a parameterized query
-$sql = 'SELECT * FROM Comments WHERE id = ?';
-$vars = [ $_GET['pk'] ];
-}
+//$sql = 'SELECT * FROM Comments WHERE id = ?';
+//$vars = [ $_GET['pk'] ];
+//}
 
 $stmt = $db->prepare($sql);
 $stmt->execute($vars);
