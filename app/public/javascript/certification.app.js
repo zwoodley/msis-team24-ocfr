@@ -1,18 +1,9 @@
 var app = new Vue({
     el: '#certifications',
     data: {
-        certifications: [{
-            cID: "",
-            certName: "",
-            certAgency: "",
-            certExp: "",
-        }],
-        addCert: {
-            cID: "",
-            certName: "",
-            certAgency: "",
-            certExp: "",
-        },
+        certifications: [],
+        addCert: {},
+        activeCert: null,
         editCert: {
             cID: "",
             certName: "",
@@ -20,18 +11,32 @@ var app = new Vue({
             certExp: "",
         },
     },
-    computed: {},
+    computed: {
+        activeCertName() {
+            return this.activeCert ? this.activeCert.certName : ''
+        },
+        activecID() {
+            return this.activeCert ? this.activeCert.cID : ''
+        },
+        activecertAgency() {
+            return this.activeCert ? this.activeCert.certAgency : ''
+        },
+        activecertExp() {
+            return this.activeCert ? this.activeCert.certExp : ''
+        }
+    },
     methods: {
         fetchCertification() {
-              fetch('api/certifications/')
-              .then(response => response.json())
-              .then(json => {
-                  this.certifications = json;
-                  console.log(this.certifications)
-              });
-              //console.log(json);
+            fetch('api/certifications/')
+                .then(response => response.json())
+                .then(json => {
+                    this.certifications = json;
+                    console.log(json)
+                });
+
         },
-        addCertification() {
+        handleNewCert(evt) {
+
             fetch('api/certifications/addcert.php', {
                     method: 'POST',
                     body: JSON.stringify(this.addCert),
@@ -42,13 +47,22 @@ var app = new Vue({
                 .then(response => response.json())
                 .then(json => {
                     console.log("Returned from post:", json);
+
                     this.certifications.push(json[0]);
                     this.addCert = this.newCertData();
                 });
+
             console.log("Creating (POSTing)...!");
             console.log(this.addCert);
         },
-        editCertification() {
+        handleEditCert(evt) {
+            console.log('Edited Certification submitted');
+            if (!this.activeCert) {
+                alert("ERROR: No Certification selected!");
+                return false;
+            }
+            this.editCert.cID = this.activeCert.cID;
+
             fetch('api/certifications/addcert.php', {
                     method: 'POST',
                     body: JSON.stringify(this.editCert),
@@ -58,49 +72,41 @@ var app = new Vue({
                 })
                 .then(response => response.json())
                 .then(json => {
-                    console.log("Returned from post:", json);
-                    this.certifications.push(json[0]);
-                    this.editCert = this.newCertData();
+                    console.log("Returned from editing certification", json);
+                    this.certifications = json;
+                    this.editedCert = this.editCertData();
                 });
-            console.log("Creating (POSTing)...!");
-            console.log(this.editCert);
+
         },
-        //editedCertification: function() {
-        // fetch('api/certifications/addcert.php', {
-        //       method: 'POST',
-        //     body: JSON.stringify(this.editCert),
-        //   headers: {
-        //     "Content-Type": "application/json; charset=utf-8"
-        //}
-        // })
-        //.then(response => response.json())
-        // .then(json => {
-        //   console.log("Returned from post:", json);
-        // this.certifications.push(json[0]);
-        // this.editCert = this.newCertData();
-        //  });
-        // console.log("Creating (POSTing)...!");
-        // console.log(this.editCert);
-        // },
-        deleteCertification() {
-            this.certifications.splice(this.certification)
-                // fetch('api/certifications/addcert.php', {
-                // method: 'POST',
-                //body: JSON.stringify(this.editCert),
-                //headers: {
-                //   "Content-Type": "application/json; charset=utf-8"
-                // }
-                //})
-                //.then(response => response.json())
-                //.then(json => {
-                //  console.log("Returned from post:", json);
-                //this.certifications.push(json[0]);
-                //this.editCert = this.newCertData();
-                // });
-                //console.log("Creating (POSTing)...!");
-                // console.log(this.editCert);
+
+        deleteCertification: function(index) {
+            this.$delete(this.certification, index)
+
+            // fetch('api/certifications/addcert.php', {
+            // method: 'POST',
+            //body: JSON.stringify(this.editCert),
+            //headers: {
+            //   "Content-Type": "application/json; charset=utf-8"
+            // }
+            //})
+            //.then(response => response.json())
+            //.then(json => {
+            //  console.log("Returned from post:", json);
+            //this.certifications.push(json[0]);
+            //this.editCert = this.newCertData();
+            // });
+            //console.log("Creating (POSTing)...!");
+            // console.log(this.editCert);
         },
         newCertData() {
+            return {
+                cID: "",
+                certName: "",
+                certAgency: "",
+                certExp: "",
+            }
+        },
+        editCertData() {
             return {
                 cID: "",
                 certName: "",
@@ -112,5 +118,7 @@ var app = new Vue({
     },
     created() {
         this.fetchCertifcation();
+        this.addCert = this.newCertData();
+        this.editecCert = this.editCertData();
     }
 });

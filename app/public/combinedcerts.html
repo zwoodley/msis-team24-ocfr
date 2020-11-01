@@ -55,8 +55,8 @@
               Reports
             </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                  <a class="dropdown-item" href="reportExp.html">Expired Certifications</a>
-                                  <a class="dropdown-item" href="reportMSR.html">Members by Radio # and Station #</a>
+                                    <a class="dropdown-item" href="reportExp.html">Expired Certifications</a>
+                                    <a class="dropdown-item" href="reportMSR.html">Members by Radio # and Station #</a>
                                 </div>
                             </li>
                         </ul>
@@ -66,68 +66,68 @@
             </nav>
         </div>
         <div class='fluid-container'>
-          <div id='certifications'>
-            <div class='row'>
-                <div class='col-sm-8 col-md-8 col-lg-8'>
-                    <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th class='th-sm'>Certification ID</th>
-                                <th class='th-sm'>Certification Name</th>
-                                <th class='th-sm'>Agency</th>
-                                <th class='th-sm'>Expiration Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="certification in certifications">
-                                <td>{{certification.cID}}</td>
-                                <td>{{certification.certName}}</td>
-                                <td>{{certification.certAgency}}</td>
-                                <td>{{certification.certExp}}</td>
-                            </tr>
+            <div id='certifications'>
+                <div class='row'>
+                    <div class='col-sm-8 col-md-8 col-lg-8'>
+                        <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th class='th-sm'>Certification ID</th>
+                                    <th class='th-sm'>Certification Name</th>
+                                    <th class='th-sm'>Agency</th>
+                                    <th class='th-sm'>Expiration Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="certification in certifications" v-on:click='activeCert = certification'>
+                                    <td>{{certification.cID}}</td>
+                                    <td>{{certification.certName}}</td>
+                                    <td>{{certification.certAgency}}</td>
+                                    <td>{{certification.certExp}}</td>
+                                </tr>
 
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td class='text-center' colspan='6'>OCFR Certification List</td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-                <div class='col-sm-2 col-md-2 col-lg-2' id='addCertification'>
-                    <form v-on:submit.prevent='addCertification()'>
-                        <label>Certification ID</label>
-                        <input name='certID' type="text" id='certID' v-model='addCert.certificationID'>
-                        <label>Certification Name</label>
-                        <input name='certName' type="text" id='certName' v-model='addCert.certName'>
-                        <p></p>
-                        <label>Agency</label>
-                        <input name='certAgency' type="text" id='certAgency' v-model='addCert.certAgency'>
-                        <p></p>
-                        <label>Expiration Date</label>
-                        <input name='expDate' type="date" id='expDate' v-model='addCert.certExp'><br>
-                        <br><input name='addCert' value='Add Certification' type="submit" id='addCert'>
-                    </form>
-                </div>
-                <div class='col-sm-2 col-md-2 col-lg-2'>
-                    <form v-on:submit.prevent='editCertification()'>
-                        <label>Certification ID</label>
-                        <input name='certID' type="text" id='certName' v-model='editCert.cID'>
-                        <label>Certification Name</label>
-                        <input name='certName' type="text" id='certName' v-model='editCert.certName'>
-                        <p></p>
-                        <label>Agency</label>
-                        <input name='certAgency' type="text" id='certAgency' v-model='editCert.certAgency'>
-                        <p></p>
-                        <label>Expiration Date</label>
-                        <input name='expDate' type="date" id='expDate' v-model='editCert.certExp'><br>
-                        <br><button name='editCert' type="submit" id='editCert'>Edit</button>
-                        <p></p>
-                        <br><button name='deleteCert' @click="deleteCertification" id='deleteCert'>Delete</button>
-                    </form>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td class='text-center' colspan='6'>OCFR Certification List</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class='col-sm-2 col-md-2 col-lg-2' id='addCertification'>
+                        <form method="post" v-on:submit.prevent='handleNewCert'>
+                            <label>Certification ID</label>
+                            <input name='certID' type="text" id='certID' v-model='addCert.certificationID'>
+                            <label>Certification Name</label>
+                            <input name='certName' type="text" id='certName' v-model='addCert.certName'>
+                            <p></p>
+                            <label>Agency</label>
+                            <input name='certAgency' type="text" id='certAgency' v-model='addCert.certAgency'>
+                            <p></p>
+                            <label>Expiration Date</label>
+                            <input name='expDate' type="date" id='expDate' v-model='addCert.certExp'><br>
+                            <br><button name='addCert' type="submit" id='addCert'>Add Certification</button>
+                        </form>
+                    </div>
+                    <div class='col-sm-2 col-md-2 col-lg-2'>
+                        <form v-on:submit.prevent='handleEditCert'>
+                            <label>Certification ID</label>
+                            <input name='certID' type="text" id='certName' v-bind:value='activecID'>
+                            <label>Certification Name</label>
+                            <input name='certName' type="text" id='certName' v-bind:value='activecertName'>
+                            <p></p>
+                            <label>Agency</label>
+                            <input name='certAgency' type="text" id='certAgency' v-bind:value='activecertAgency'>
+                            <p></p>
+                            <label>Expiration Date</label>
+                            <input name='expDate' type="date" id='expDate' v-bind:value='activecertExp'><br>
+                            <br><button name='editCert' type="submit" id='editCert'>Edit</button>
+                            <p></p>
+                            <br><button name='deleteCert' @click="deleteCertification" id='deleteCert'>Delete</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-          </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
