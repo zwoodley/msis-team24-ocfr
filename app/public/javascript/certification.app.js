@@ -79,10 +79,10 @@ var app = new Vue({
 
         },
 
-        deleteCertification(cID) {
+        deleteCertification() {
             fetch('api/certifications/deletecert.php', {
                     method: 'POST',
-                    body: JSON.stringify({ 'cID': cID }),
+                    body: JSON.stringify(this.certification),
                     headers: {
                         "Content-Type": "application/json; charset=utf-8"
                     }

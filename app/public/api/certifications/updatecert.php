@@ -13,7 +13,7 @@ $db = DbConnection::getConnection();
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
   'UPDATE certification 
-  SET certName = ?,
+  SET certName = ?, certAgency = ?, certExp = ?
   WHERE certificationID = ?'
 );
 
