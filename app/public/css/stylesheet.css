@@ -55,16 +55,6 @@ table.dataTable thead .sorting_desc_disabled:before {
 */
 
 
-#deleteCert:hover {
-    background-color: darkred;
-    color: white;
-}
 
-#editCert {
-    background-color: white;
-    color: black;
-    font-weight: bold;
-    padding: 10px;
-}
 
 /* Reports */
