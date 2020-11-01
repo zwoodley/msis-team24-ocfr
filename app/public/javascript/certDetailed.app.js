@@ -2,29 +2,19 @@ var app = new Vue({
   el: '#certificationDetailed',
   data: {
     mbrList: [],
-    dropdown_menu_one:{
-      certification:''
-    }
   },
   methods: {
-    mbrData() {
-      return {
-        cID: "",
-        fname: "",
-        lname: "",
-        certName: "",
-        certAgency: "",
-        certExp: "",
-      }
-    }
-  },
-  created() {
-    fetch("api/records/certDetailed.php")
-    .then( response => response.json() )
-    .then( json => {
+    fetchmbrList() {
+      fetch("api/records/certDetailed.php")
+      .then( response => response.json() )
+      .then( json => {
       this.mbrList = json;
+      console.log(this.mbrList);
 
-      console.log(json)}
-    );
+    });
   }
-})
+},
+  created() {
+    this.mbrList();
+  }
+});

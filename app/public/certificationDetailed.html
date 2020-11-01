@@ -57,21 +57,21 @@
     <div class="container-fluid">
           <h1 class="page-header">Detailed Certification Record</h1>
 
-          <div class = "dropdown_menu_one">
+          <!-- <div class = "dropdown_menu_one">
             <p> Select a Certification: </p>
               <select v-model = "dropdown_menu_one.certification">
                 <option value = ""> All Certifications </option>
-                <option v-bind = "m in mbrList"> {{member.certName}} </option>
+                <option v-bind = "m in mbrList"> {{c.certName}} </option>
               </select>
-          </div>
+          </div> -->
 
+          <!-- Search form -->
           <br>
           <div id="certificationDetailed">
-
-                <table id="memlist" class="table table-striped">
+                <input id = 'myFilter' type="text" placeholder="Search by certification" aria-label="Search">
+                <table id="certList" class="table table-striped">
                   <thead>
                     <tr>
-                      <th>ID</th>
                       <th>First Name</th>
                       <th>Last Name</th>
                       <th>Certification</th>
@@ -79,9 +79,8 @@
                       <th>Length of Expiration</th>
                     </tr>
                   </thead>
-                  <tbody>
-              <tr v-for="m in mbrList" v-on:click="activePt = m" v-if = "dropdown_menu_one.certification = '' || dropdown_menu_one.certification == member.certName">
-	              <td>{{ 1000 + m.cID }}</td>
+                  <tbody id = 'myTable'>
+              <tr v-for="m in mbrList">
                 <td>{{ m.fname }}</td>
                 <td>{{ m.lname }}</td>
                 <td>{{ m.certName }}</td>
@@ -98,10 +97,10 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="javascript/certDetailed.app.js"></script>
     <script src='javascript/tablesort.min.js'></script>
-    <script>new Tablesort(document.getElementById('memlist'));</script>
+    <script src='javascript/certSearch.app.js'></script>
+    <script>new Tablesort(document.getElementById('certlist'));</script>
   </body>
 </html>
