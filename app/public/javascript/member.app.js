@@ -2,71 +2,9 @@ var app = new Vue({
     el: '#memberPage',
     data: {
 //    editMode: false,
-        members: [{
-            personID:"",
-            fname:"",
-            lname:"",
-            position:"",
-            startDate:"",
-            isActive:"",
-            radioNum:"",
-            dob:"",
-            gender:"",
-            addStreet:"",
-            addCity:"",
-            addState:"",
-            addZip:"",
-            email:"",
-            cellPhone:"",
-            workPhone:"",
-            homePhone:"",
-            mainDepartment:"",
-            secondaryDepartment:""
-        }],
-        addMember: {
-          personID:"",
-          fname:"",
-          lname:"",
-          position:"",
-          startDate:"",
-          isActive:"",
-          radioNum:"",
-          dob:"",
-          gender:"",
-          addStreet:"",
-          addCity:"",
-          addState:"",
-          addZip:"",
-          email:"",
-          cellPhone:"",
-          workPhone:"",
-          homePhone:"",
-          mainDepartment:"",
-          secondaryDepartment:""
-
-        },
-        editMember: {
-          personID:"",
-          fname:"",
-          lname:"",
-          position:"",
-          startDate:"",
-          isActive:"",
-          radioNum:"",
-          dob:"",
-          gender:"",
-          addStreet:"",
-          addCity:"",
-          addState:"",
-          addZip:"",
-          email:"",
-          cellPhone:"",
-          workPhone:"",
-          homePhone:"",
-          mainDepartment:"",
-          secondaryDepartment:""
-
-        },
+        members: [],
+        addMember: {},
+        editMember: {},
     //    editedMember: null,
     },
     computed: {},
@@ -112,8 +50,8 @@ var app = new Vue({
           .then(json => {
               console.log("Returned from post:", json);
               this.members.push(json[0]);
-              this.members=json;
-              this.addMember = this.newMemberData();
+              this.members = json;
+              this.editMember = this.newMemberData();
 
           });
       console.log("Creating (POSTing)...!");
