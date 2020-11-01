@@ -94,19 +94,19 @@
                         </tfoot>
                     </table>
                 </div>
-                <div class='col-sm-2 col-md-2 col-lg-2' id='addCertification'>
-                    <form v-on:submit.prevent='addCertification()'>
+                <div class='col-sm-2 col-md-2 col-lg-2'>
+                    <form method="post" v-on:submit.prevent='handleNewCert'>
                         <label>Certification ID</label>
-                        <input name='certID' type="text" id='certID' v-model='addCert.certificationID'>
+                        <input type="text" id='certID' v-model='newCert.certificationID'>
                         <label>Certification Name</label>
-                        <input name='certName' type="text" id='certName' v-model='addCert.certName'>
+                        <input type="text" id='certName' v-model='newCert.certName'>
                         <p></p>
                         <label>Agency</label>
-                        <input name='certAgency' type="text" id='certAgency' v-model='addCert.certAgency'>
+                        <input type="text" id='certAgency' v-model='newCert.certAgency'>
                         <p></p>
                         <label>Expiration Date</label>
-                        <input name='expDate' type="date" id='expDate' v-model='addCert.certExp'><br>
-                        <br><input name='addCert' value='Add Certification' type="submit" id='addCert'>
+                        <input type="date" id='expDate' v-model='newCert.certExp'><br>
+                        <br><input value='Add Certification' type="submit">
                     </form>
                 </div>
                 <div class='col-sm-2 col-md-2 col-lg-2'>
@@ -125,7 +125,6 @@
                         <p></p>
                         <br><input name='deleteCert' value='Delete Certification' type="submit" id='deleteCert'>
                     </form>
-                </div>
             </div>
           </div>
         </div>
@@ -133,8 +132,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    <script src="javascript/certification.app.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="javascript/testcertification.app.js"></script>
 </body>
 
 </html>

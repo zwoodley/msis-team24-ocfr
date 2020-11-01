@@ -1,4 +1,4 @@
-CertApp = new Vue({
+var app = new Vue({
     el: '#certifications',
     data: {
         certifications: [{
@@ -22,12 +22,13 @@ CertApp = new Vue({
     },
     methods: {
         fetchCertification() {
-            fetch('api/certifications/')
-                .then(response => response.json())
-                .then(json => {
-                    this.certifications = json;
-                    console.log(this.certifications)
-                });
+              fetch('api/certifications/')
+              .then(response => response.json())
+              .then(json => {
+                  this.certifications = json;
+                  console.log(this.certifications)
+              });
+              //console.log(json);
         },
         addCertification() {
             fetch('api/certifications/addcert.php', {
