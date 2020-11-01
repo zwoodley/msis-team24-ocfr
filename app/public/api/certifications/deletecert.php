@@ -11,16 +11,12 @@ $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
-$results = $db->query(
-  'DELETE FROM certification (cID, certName, certAgency, certExp)
-  WHERE cID = 'cID'') or die ($db->error
+$stmt = $db->query(
+  'DELETE FROM certification WHERE cID = ?'
 );
 
-$results->execute([
+$stmt->execute([
   $_POST['cID'],
-  $_POST['certName'],
-  $_POST['certAgency'],
-  $_POST['certExp']
 ]);
 
 // If needed, get auto-generated PK from DB
@@ -30,4 +26,4 @@ $results->execute([
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 header('HTTP/1.1 303 See Other');
-header('Location: ../records/?cID=' .$_POST['cID']);
+header('Location: ../certifications/');

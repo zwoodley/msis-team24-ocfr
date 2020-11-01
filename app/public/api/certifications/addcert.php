@@ -30,4 +30,4 @@ $stmt->execute([
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 header('HTTP/1.1 303 See Other');
-header('Location: ../records/?cID=' .$_POST['cID']);
+header('Location: ../certifications/?cID=' .$_POST['cID']);
