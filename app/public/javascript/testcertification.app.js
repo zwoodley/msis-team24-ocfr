@@ -67,7 +67,7 @@ var app = new Vue({
 
       console.log("Creating (POSTing)...!");
       console.log(this.newCert);
-    },
+    }, // work from this
   addCertification() {
       fetch('api/certifications/addcert.php', {
               method: 'POST',

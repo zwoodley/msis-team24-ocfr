@@ -52,17 +52,8 @@ table.dataTable thead .sorting_desc_disabled:before {
     color: white;
 }
 
-<<<<<<< HEAD
 */
 
-=======
-#deleteCert {
-    background-color: white;
-    color: black;
-    font-weight: bold;
-    padding: 10px;
-}
->>>>>>> 4389a88cdb3328a032c4d705fe430018bcd37823
 
 #deleteCert:hover {
     background-color: darkred;
@@ -76,11 +67,4 @@ table.dataTable thead .sorting_desc_disabled:before {
     padding: 10px;
 }
 
-<<<<<<< HEAD
 /* Reports */
-=======
-#editCert:hover {
-    background-color: darkred;
-    color: white;
-}
->>>>>>> 4389a88cdb3328a032c4d705fe430018bcd37823
