@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 
+
+
 <html>
     <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -14,6 +16,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -21,8 +25,8 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Members
-                </a>
+    Members
+  </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="memberlist.html">View Member List</a>
                     <a class="dropdown-item" href="newMember.html">Add a Member</a>
@@ -32,44 +36,37 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Certifications
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="certificationList.html">View Certification List</a>
-                  <a class="dropdown-item" href="newCertification.html">Add a Certification</a>
-                  <a class="dropdown-item" href="editCertification.html">Edit Certification List</a>
-                  <a class="dropdown-item" href="certificationDetailed.html">View Detailed Certification Record</a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Reports
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="reportExp.html">Expired Certifications</a>
-                  <a class="dropdown-item" href="reportMSR.html">Members by Radio # and Station #</a>
-                </div>
-              </li>
-              </ul>
+    Certifications
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a class="dropdown-item" href="certificationList.html">View Certification List</a>
+    <a class="dropdown-item" href="newCertification.html">Add a Certification</a>
+    <a class="dropdown-item" href="editCertification.html">Edit Certification List</a>
+    <a class="dropdown-item" href="certificationDetailed.html">View Detailed Certification Record</a>
+  </div>
+</li>
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Reports
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a class="dropdown-item" href="reportExp.html">Expired Certifications</a>
+    <a class="dropdown-item" href="reportMSR.html">Members by Radio # and Station #</a>
+  </div>
+</li>
+</ul>
 
-            </div>
-          </nav>
+
+
+    </div>
+  </nav>
+    </nav>
     <div class="container-fluid">
           <h1 class="page-header">Detailed Certification Record</h1>
-
-          <!-- <div class = "dropdown_menu_one">
-            <p> Select a Certification: </p>
-              <select v-model = "dropdown_menu_one.certification">
-                <option value = ""> All Certifications </option>
-                <option v-bind = "m in mbrList"> {{c.certName}} </option>
-              </select>
-          </div> -->
-
-          <!-- Search form -->
-          <br>
-          <div id="certificationDetailed">
-                <input id = 'myFilter' type="text" placeholder="Search by certification" aria-label="Search">
-                <table id="certList" class="table table-striped">
+          <div id="reportExp">
+            <input class="form-control" id="searchInput" type="text" placeholder="Search by certification name (EMT, Firefighter, NRP, TECC, etc.)">
+            <br>
+                <table id="memlist" class="table table-striped">
                   <thead>
                     <tr>
                       <th>First Name</th>
@@ -79,7 +76,7 @@
                       <th>Length of Expiration</th>
                     </tr>
                   </thead>
-                  <tbody id = 'myTable'>
+                  <tbody id="certTable">
               <tr v-for="m in mbrList">
                 <td>{{ m.fname }}</td>
                 <td>{{ m.lname }}</td>
@@ -99,8 +96,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="javascript/certDetailed.app.js"></script>
-    <script src='javascript/tablesort.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src='javascript/certSearch.app.js'></script>
-    <script>new Tablesort(document.getElementById('certlist'));</script>
   </body>
 </html>
