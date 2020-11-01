@@ -123,7 +123,7 @@
                             <input name='expDate' type="date" id='expDate' v-bind:value='activecertExp'><br>
                             <br><button name='editCert' type="submit" id='editCert'>Edit</button>
                             <p></p>
-                            <br><button name='deleteCert' @click="deleteCertification" id='deleteCert'>Delete</button>
+                            <br><button name='deleteCert' v-on:click="deleteCertification(cID)" id='deleteCert'>Delete</button>
                         </form>
                     </div>
                 </div>

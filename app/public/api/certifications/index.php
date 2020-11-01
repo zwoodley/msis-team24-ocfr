@@ -6,7 +6,7 @@ require 'common.php';
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$sql = 'SELECT certificationID as cID, certName, certAgency, certExp
+$sql = 'SELECT cID, certName, certAgency, certExp
         FROM certification
         ORDER BY cID';
 $vars = [];

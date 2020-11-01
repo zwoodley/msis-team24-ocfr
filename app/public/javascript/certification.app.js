@@ -79,24 +79,19 @@ var app = new Vue({
 
         },
 
-        deleteCertification: function(index) {
-            this.$delete(this.certification, index)
-
-            // fetch('api/certifications/addcert.php', {
-            // method: 'POST',
-            //body: JSON.stringify(this.editCert),
-            //headers: {
-            //   "Content-Type": "application/json; charset=utf-8"
-            // }
-            //})
-            //.then(response => response.json())
-            //.then(json => {
-            //  console.log("Returned from post:", json);
-            //this.certifications.push(json[0]);
-            //this.editCert = this.newCertData();
-            // });
-            //console.log("Creating (POSTing)...!");
-            // console.log(this.editCert);
+        deleteCertification(cID) {
+            fetch('api/certifications/deletecert.php', {
+                    method: 'POST',
+                    body: JSON.stringify({ 'cID': cID }),
+                    headers: {
+                        "Content-Type": "application/json; charset=utf-8"
+                    }
+                })
+                .then(response => response.json())
+                .then(json => {
+                    this.certifications = json;
+                    console.log(this.certifications);
+                })
         },
         newCertData() {
             return {
