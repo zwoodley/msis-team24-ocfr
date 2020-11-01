@@ -1,9 +1,8 @@
 var app = new Vue({
     el: '#memberPage',
     data: {
-    editedMember: null,
-    editMode: false,
-        members: {
+//    editMode: false,
+        members: [{
             personID:"",
             fname:"",
             lname:"",
@@ -23,7 +22,7 @@ var app = new Vue({
             homePhone:"",
             mainDepartment:"",
             secondaryDepartment:""
-        },
+        }],
         addMember: {
           personID:"",
           fname:"",
@@ -44,7 +43,7 @@ var app = new Vue({
           homePhone:"",
           mainDepartment:"",
           secondaryDepartment:""
-          //need to call all data to add to db, not just display
+
         },
         editMember: {
           personID:"",
@@ -66,16 +65,17 @@ var app = new Vue({
           homePhone:"",
           mainDepartment:"",
           secondaryDepartment:""
-          //need to call all data to add to db, not just display
+
         },
+    //    editedMember: null,
     },
     computed: {},
     methods: {
   //    saveData () {}, needs to be a post//
-  editData () {
-      this.beforEditCache = this.members,
-      this.editedMember = this.members
-      },
+  //  editMember (m) {
+  //    this.beforEditCache = m
+  //    this.editedMember = m
+//      },
   handleNewMember( evt ){
     evt.preventDefault();
 
@@ -96,6 +96,28 @@ var app = new Vue({
     })
     console.log("Creating...!");
     console.log(this.addMember);
+  },
+  handleEditMember( evt ) {
+    evt.preventDefault();
+
+      fetch('api/member/create.php', {
+              method: 'POST',
+              body: JSON.stringify(this.editMember),
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              }
+          })
+          .then(response => response.json())
+          .then(json => {
+              console.log("Returned from post:", json);
+              this.members.push(json[0]);
+              this.members=json;
+              this.addMember = this.newMemberData();
+
+          });
+      console.log("Creating (POSTing)...!");
+      console.log(this.editMember);
   },
 
   //      editMembers() {

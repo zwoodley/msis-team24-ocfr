@@ -1,15 +1,17 @@
-#newMembers{font-size:1;
 
-  },
-[v-cloak] {
-  display: none;
-}
+h1 {font-style: italic;
+  }
+  
+#newMembers{font-size:1;}
+
 .edit {
   display: none;
 }
+
 .editing .edit {
   display: block
 }
+
 .editing .view {
   display: none;
 }
