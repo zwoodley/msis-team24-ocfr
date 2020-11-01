@@ -63,7 +63,7 @@ var app = new Vue({
             }
             this.editCert.cID = this.activeCert.cID;
 
-            fetch('api/certifications/addcert.php', {
+            fetch('api/certifications/updatecert.php', {
                     method: 'POST',
                     body: JSON.stringify(this.editCert),
                     headers: {
