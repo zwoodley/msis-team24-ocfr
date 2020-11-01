@@ -121,9 +121,9 @@
                         <p></p>
                         <label>Expiration Date</label>
                         <input name='expDate' type="date" id='expDate' v-model='editCert.certExp'><br>
-                        <br><input name='editCert' value='Edit Certification' type="submit" id='editCert'>
+                        <br><button name='editCert' type="submit" id='editCert'>Edit</button>
                         <p></p>
-                        <br><input name='deleteCert' value='Delete Certification' type="submit" id='deleteCert'>
+                        <br><button name='deleteCert' @click="deleteCertification" id='deleteCert'>Delete</button>
                     </form>
                 </div>
             </div>
