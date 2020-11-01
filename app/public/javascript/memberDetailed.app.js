@@ -7,6 +7,8 @@ var app = new Vue({
     mbrData() {
       return {
         cID: "",
+        fname: "",
+        lname: "",
         certName: "",
         certAgency: "",
         certExp: "",
@@ -18,7 +20,6 @@ var app = new Vue({
     .then( response => response.json() )
     .then( json => {
       this.mbrList = json;
-
       console.log(json)}
     );
   }
