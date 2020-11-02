@@ -72,7 +72,7 @@ var app = new Vue({
             console.log("Creating (POSTing)...!");
             console.log(this.addCert);
         },
-        handleEditCert() {
+        handleEditCert(evt) {
             console.log('Edited Certification submitted');
             if (!this.activeCert) {
                 alert("ERROR: No Certification selected!");
