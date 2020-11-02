@@ -27,12 +27,12 @@ var app = new Vue({
     },
     methods: {
         fetchCertification() {
-            fetch('api/certifications/index.php')
-                .then(response => response.json())
-                .then(json => {
-                    this.certifications = json;
-                    console.log(json)
-                });
+            return {
+                cID: "",
+                certName: "",
+                certAgency: "",
+                certExp: "",
+            }
 
         },
         handleNewCert(evt) {
