@@ -18,5 +18,7 @@ $stmt->execute([
   $_POST['certExp']
 ]);
 
+$certificationID = $db->lastInsertID();
+
 header('HTTP/1.1 303 See Other');
-header('Location: ../certifications/?certificationID=' .$_POST['certificationID']);
+header('Location: ../certifications/');

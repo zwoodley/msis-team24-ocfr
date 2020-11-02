@@ -5,13 +5,13 @@ var app = new Vue({
         newCert: {},
         activeCert: null,
         addCert: {
-            cID: "",
+            certificationID: "",
             certName: "",
             certAgency: "",
             certExp: "",
         },
         editCert: {
-            cID: "",
+            certificationID: "",
             certName: "",
             certAgency: "",
             certExp: "",
@@ -21,8 +21,8 @@ var app = new Vue({
         activecertName() {
             return this.activeCert ? this.activeCert.certName : ''
         },
-        activecID() {
-            return this.activeCert ? this.activeCert.cID : ''
+        activecertificationID() {
+            return this.activeCert ? this.activeCert.certificationID : ''
         },
         activecertAgency() {
             return this.activeCert ? this.activeCert.certAgency : ''
@@ -34,7 +34,7 @@ var app = new Vue({
     methods: {
         fetchCertification() {
             return {
-                cID: "",
+                certificationID: "",
                 certName: "",
                 certAgency: "",
                 certExp: "",
@@ -42,7 +42,7 @@ var app = new Vue({
         },
         newCertData() {
             return {
-                cID: "",
+                certificationID: "",
                 certName: "",
                 certAgency: "",
                 certExp: "",
@@ -50,14 +50,14 @@ var app = new Vue({
         },
         editCertData() {
             return {
-                cID: "",
+                certificationID: "",
                 certName: "",
                 certAgency: "",
                 certExp: "",
             }
         },
         created() {
-            fetch("api/certifications/")
+            fetch("api/certifications/index.php")
                 .then(response => response.json())
                 .then(json => {
                     this.certifications = json;
@@ -94,7 +94,7 @@ var app = new Vue({
                 alert("ERROR: No Certification selected!");
                 return false;
             }
-            this.editCert.cID = this.activeCert.cID;
+            this.editCert.certificationID = this.activeCert.certificationID;
 
             fetch('api/certifications/updatecert.php', {
                     method: 'POST',

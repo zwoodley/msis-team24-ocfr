@@ -67,7 +67,7 @@
             <div id='certifications'>
                 <div class='row'>
                     <div class='col-sm-8 col-md-8 col-lg-8'>
-                        <table id='certifications' class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                        <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th class='th-sm'>Certification ID</th>
@@ -78,10 +78,10 @@
                             </thead>
                             <tbody>
                                 <tr v-for="certification in certifications" v-on:click='activeCert = certification'>
-                                    <td>{{certification.cID}}</td>
+                                    <td>{{certification.certificationID}}</td>
                                     <td>{{certification.certName}}</td>
                                     <td>{{certification.certAgency}}</td>
-                                    <td>{{certification.certExp}}</td>
+                                    <td>{{certification.certExp}} years</td>
                                 </tr>
 
                             </tbody>
@@ -110,7 +110,7 @@
                     <div class='col-sm-2 col-md-2 col-lg-2'>
                         <form v-on:submit.prevent='handleEditCert'>
                             <label>Certification ID</label>
-                            <input name='certID' type="text" id='certName' v-bind:value='activecID'>
+                            <input name='certID' type="text" id='certName' v-bind:value='activecertificationID'>
                             <label>Certification Name</label>
                             <input name='certName' type="text" id='certName' v-bind:value='activecertName'>
                             <p></p>

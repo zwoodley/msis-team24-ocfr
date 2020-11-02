@@ -6,7 +6,7 @@ require 'common.php';
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$sql = 'SELECT certificationID, certName, certAgency, certExp
+$sql = 'SELECT *
         FROM certification';
 $vars = [];
 
@@ -19,10 +19,10 @@ $vars = [];
 $stmt = $db->prepare($sql);
 $stmt->execute($vars);
 
-$certification = $stmt->fetchAll();
+$certifications = $stmt->fetchAll();
 
 // Step 3: Convert to JSON
-$json = json_encode($patients, JSON_PRETTY_PRINT);
+$json = json_encode($certifications, JSON_PRETTY_PRINT);
 
 // Step 4: Output
 header('Content-Type: application/json');
