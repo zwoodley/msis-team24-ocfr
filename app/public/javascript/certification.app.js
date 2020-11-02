@@ -56,17 +56,6 @@ var app = new Vue({
                 certExp: "",
             }
         },
-        created() {
-            fetch("api/certifications/index.php")
-                .then(response => response.json())
-                .then(json => {
-                    this.certifications = json;
-
-                    console.log(this.certification)
-                });
-            this.addCert = this.newCertData();
-            this.editCert = this.editCertData();
-        },
         handleNewCert(evt) {
 
             fetch('api/certifications/addcert.php', {
@@ -104,27 +93,41 @@ var app = new Vue({
                         "Accept": 'application/json'
                     }
                 })
-                .then(response => response.json())
-                .then(json => {
-                    console.log("Returned from editing certification", json);
-                    this.certifications = json;
+                .then(response => response.text())
+                .then(text => {
+                    console.log("Returned from editing certification", text);
+                    this.certifications = text;
                     this.editCert = this.editCertData();
                 })
         },
+        deleteCert(index) {
+            if (!confirm('You want to delete for real?')) { return }
+            console.log('Deleting', index)
+
+            fetch('api/certifications/deletecert.php', {
+                    method: 'POST',
+                    body: JSON.stringify({ "certificationID": index }),
+                    headers: {
+                        "Content-Type": "application/json; charset=utf-8",
+                        "Accept": 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(json => {
+                    this.certifications = json;
+                    console.log(this.certifications);
+                })
+        },
     },
-    deleteCertification() {
-        fetch('api/certifications/deletecert.php', {
-                method: 'POST',
-                body: JSON.stringify(this.certification),
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8",
-                    "Accept": 'application/json'
-                }
-            })
+    created() {
+        fetch("api/certifications/")
             .then(response => response.json())
             .then(json => {
                 this.certifications = json;
-                console.log(this.certifications);
-            })
+
+                console.log(this.certifications)
+            });
+        this.addCert = this.newCertData();
+        this.editCert = this.editCertData();
     },
 });

@@ -49,3 +49,12 @@ table.dataTable thead .sorting_desc_disabled:before {
 table {
     color: black;
 }
+
+#deletebutton {
+    background-color: black;
+    color: white;
+    border: none;
+    height: 30px;
+    width: 60px;
+    font-size: 13px;
+}
