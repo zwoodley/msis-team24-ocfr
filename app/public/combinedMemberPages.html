@@ -246,6 +246,9 @@
                     <td>{{m.cellPhone}}</td>
                     <td>{{m.workPhone}}</td>
                     <td>{{m.homePhone}}</td>
+                    <td>
+                        <button class="btn btn-danger" id='deletebutton' @click="deleteMember(m.personID)">Delete</button>
+                    </td>
                   </tr>
                 </tbody>
           </table>
@@ -263,129 +266,129 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="idEdit">Member ID</label>
-                  <input v-bind:value="activeMember.personID" type="number" class="form-control" id="idEdit" placeholder="00">
+                  <input v-bind:value="activeMemberPersonID" type="number" class="form-control" id="idEdit" placeholder="00">
                 </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-12">
                 <label for="fnameEdit">First Name</label>
-                <input  v-bind:value="activeMember.fname"type="text"  class="form-control" id="fnameEdit" placeholder="john">
+                <input  v-bind:value="activeMemberFname"type="text"  class="form-control" id="fnameEdit" placeholder="john">
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-12">
                 <label for="lnameEdit">Last Name</label>
-                <input  v-bind:value="activeMember.lname"type="text"  class="form-control" id="lnameEdit" placeholder="Doe">
+                <input  v-bind:value="activeMemberLname"type="text"  class="form-control" id="lnameEdit" placeholder="Doe">
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-12">
                 <label for="dobEdit">DOB</label>
-                <input v-bind:value="editMember.dob" type="text"  class="form-control" id="dobEdit" placeholder="01-01-1990">
+                <input v-bind:value="activeMemberDob" type="text"  class="form-control" id="dobEdit" placeholder="01-01-1990">
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-12">
                 <label for="genderEdit">Gender</label>
-                <input v-bind:value="activeMember.gender"type="text" class="form-control" id="genderEdit" placeholder="">
+                <input v-bind:value="activeMemberGender"type="text" class="form-control" id="genderEdit" placeholder="">
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-12">
                 <label for="emailEdit">Email</label>
-                <input  v-bind:value="activeMember.email"type="email"  class="form-control" id="emailEdit" placeholder="jdoe@ocfr.org">
+                <input  v-bind:value="activeMemberEmail"type="email"  class="form-control" id="emailEdit" placeholder="jdoe@ocfr.org">
               </div>
             </div>
 
             <div class="form-row ">
               <div class="form-group col-md-12">
                 <label for="inputCellEdit">Cell Phone</label>
-                <input   v-bind:value="activeMember.cellPhone"type="tel" class="form-control" id="inputCellEdit" placeholder="1234567890">
+                <input   v-bind:value="activeMemberCellPhone"type="tel" class="form-control" id="inputCellEdit" placeholder="1234567890">
               </div>
             </div>
 
             <div class="form-row ">
               <div class="form-group col-md-12">
                 <label for="inputWorkEdit">Work Phone</label>
-                <input   v-bind:value="activeMember.workPhone" type="tel"  class="form-control" id="inputWorkEdit" placeholder="1234567890">
+                <input   v-bind:value="activeMemberWorkPhone" type="tel"  class="form-control" id="inputWorkEdit" placeholder="1234567890">
               </div>
             </div>
 
             <div class="form-row ">
               <div class="form-group col-md-12">
                 <label for="inputHomeEdit">Home Phone</label>
-                <input   v-bind:value="activeMember.homePhone" type="tel"  class="form-control" id="inputHomeEdit" placeholder="1234567890">
+                <input   v-bind:value="activeMemberHomePhone" type="tel"  class="form-control" id="inputHomeEdit" placeholder="1234567890">
               </div>
             </div>
 
             <div class="form-row ">
               <div class="form-group col-md-12">
                 <label for="inputAddressEdit">Address</label>
-                <input   v-bind:value="activeMember.addStreet"type="text"  class="form-control" id="inputAddressEdit" placeholder="1234 Main St">
+                <input   v-bind:value="activeMemberAddress"type="text"  class="form-control" id="inputAddressEdit" placeholder="1234 Main St">
               </div>
             </div>
 
             <div class="form-row ">
               <div class="form-group col-md-12">
                 <label for="cityEdit">City</label>
-                <input   v-bind:value="activeMember.addCity"type="text"  class="form-control" id="cityEdit" placeholder="monroe">
+                <input   v-bind:value="activeMemberCity"type="text"  class="form-control" id="cityEdit" placeholder="monroe">
               </div>
             </div>
 
             <div class="form-row ">
               <div class="form-group col-md-6">
                 <label for="inputStateEdit">State</label>
-                <input   v-bind:value="activeMember.addState" type="text"   class="form-control" id="inputStateEdit" placeholder="GA">
+                <input   v-bind:value="activeMemberState" type="text"   class="form-control" id="inputStateEdit" placeholder="GA">
               </div>
               <div class="form-group col-md-6">
                 <label for="inputZipEdit">Zip</label>
-                <input    v-bind:value="activeMember.addZip"type="text"  class="form-control" id="inputZipEdit" placeholder="30655">
+                <input    v-bind:value="activeMemberZip"type="text"  class="form-control" id="inputZipEdit" placeholder="30655">
               </div>
             </div>
 
             <div class="form-row ">
               <div class="form-group col-md-6">
                 <label for="radioEdit">Radio #</label>
-                <input   v-bind:value="activeMember.radioNum"type="number"   class="form-control" id="radioEdit" placeholder="0000">
+                <input   v-bind:value="activeMemberRadioNum"type="number"   class="form-control" id="radioEdit" placeholder="0000">
               </div>
             </div>
 
             <div class="form-row ">
               <div class="form-group col-md-12">
                 <label for="positionEdit">Position</label>
-                <input  v-bind:value="activeMember.position" type="text"   class="form-control" id="positionEdit" placeholder="Chief">
+                <input  v-bind:value="activeMemberposition" type="text"   class="form-control" id="positionEdit" placeholder="Chief">
               </div>
             </div>
 
             <div class="form-row ">
               <div class="form-group col-md-12">
                 <label for="depMainEdit">Main Department</label>
-                <input   v-bind:value="activeMember.mainDepartment" type="number"  class="form-control" id="depMainEdit" placeholder="00">
+                <input   v-bind:value="activeMemberMainDepartment" type="number"  class="form-control" id="depMainEdit" placeholder="00">
               </div>
             </div>
 
             <div class="form-row ">
               <div class="form-group col-md-12">
                 <label for="depSecEdit">Secondary Department</label>
-                <input   v-bind:value="activeMember.secondaryDepartment" type="number" class="form-control" id="depSecEdit" placeholder="00">
+                <input   v-bind:value="activeMemberSecondaryDepartment" type="number" class="form-control" id="depSecEdit" placeholder="00">
               </div>
             </div>
 
             <div class="form-row ">
               <div class="form-group col-md-12">
                 <label for="startEdit">Start Date</label>
-                <input   v-bind:value="activeMember.startDate" type="Date" class="form-control" id="startEdit" placeholder="01/01/1900">
+                <input   v-bind:value="activeMemberstartDate" type="Date" class="form-control" id="startEdit" placeholder="01/01/1900">
               </div>
             </div>
 
             <div class="form-row ">
               <div class="form-group col-md-12">
                 <label for="activeEdit">Active Status</label>
-                <input  v-bind:value="activeMember.isActive" type="number"  class="form-control" id="activeEdit" placeholder="1 if active, 0 if not">
+                <input  v-bind:value="activeMemberisActive" type="number"  class="form-control" id="activeEdit" placeholder="1 if active, 0 if not">
               </div>
             </div>
             <button type="submit" >Edit Member</button>
