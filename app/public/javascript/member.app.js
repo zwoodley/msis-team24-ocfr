@@ -128,6 +128,7 @@ var app = new Vue({
           });
   },
     deleteMember(index) {
+      // REF: "https://stackoverflow.com/questions/63285598/vue-js-how-to-delete-selected-row-by-delete-button-in-tbody"\\
         if (!confirm('You want to delete for real?')) { return }
         console.log('Deleting', index)
 
@@ -139,13 +140,12 @@ var app = new Vue({
                     "Accept": 'application/json'
                 }
             })
-            .then(response => response.text())
-            .then(text => {
-                this.members = text;
+            .then(response => response.json())
+            .then(json => {
+                this.members = json;
                 console.log(this.members);
             })
     },
-
         newMemberData() {
             return {
               personID:"",
@@ -194,7 +194,7 @@ var app = new Vue({
         }
     },
     created() {
-      fetch("api/member/index.php")
+      fetch("api/member/")
       .then( response => response.json() )
       .then( json => {
         this.members = json;
