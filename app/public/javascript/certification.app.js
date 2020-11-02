@@ -2,7 +2,6 @@ var app = new Vue({
     el: '#certifications',
     data: {
         certifications: [],
-        newCert: {},
         activeCert: null,
         addCert: {
             certificationID: "",
@@ -35,6 +34,26 @@ var app = new Vue({
                 certExp: "",
             }
         },
+        handleNewCert(evt) {
+
+            fetch('api/certifications/addcert.php', {
+                    method: 'POST',
+                    body: JSON.stringify(this.addCert),
+                    headers: {
+                        "Content-Type": "application/json; charset=utf-8",
+                    }
+                })
+                .then(response => response.json())
+                .then(json => {
+                    console.log("Returned from post:", json);
+
+                    this.certifications.push(json[0]);
+                    this.addCert = this.newCertData();
+                });
+
+            console.log("Creating (POSTing)...!");
+            console.log(this.addCert);
+        },
         newCertData() {
             return {
                 certificationID: "",
@@ -43,42 +62,13 @@ var app = new Vue({
                 certExp: "",
             }
         },
-        editCertData() {
-            return {
-                certificationID: "",
-                certName: "",
-                certAgency: "",
-                certExp: "",
-            }
-        },
-        handleNewCert(evt) {
-
-            fetch('api/certifications/addcert.php', {
-                    method: 'POST',
-                    body: JSON.stringify(this.addCert),
-                    headers: {
-                        "Content-Type": "application/json; charset=utf-8",
-                        "Accept": "application/json"
-                    }
-                })
-                .then(response => response.text())
-                .then(text => {
-                    console.log("Returned from post:", text);
-
-                    this.certifications.push(text[0]);
-                    this.addCert = this.newCertData();
-                });
-
-            console.log("Creating (POSTing)...!");
-            console.log(this.addCert);
-        },
-        handleEditCert(evt) {
+        handleEditCert() {
             console.log('Edited Certification submitted');
             if (!this.activeCert) {
                 alert("ERROR: No Certification selected!");
                 return false;
             }
-            //this.editCert.certificationID = this.activeCert.certificationID;
+            this.editCert.certificationID = this.activeCert.certificationID;
 
             fetch('api/certifications/updatecert.php', {
                     method: 'POST',
@@ -94,6 +84,15 @@ var app = new Vue({
                     this.certifications = json;
                     this.editCert = this.editCertData();
                 })
+        },
+
+        editCertData() {
+            return {
+                certificationID: "",
+                certName: "",
+                certAgency: "",
+                certExp: "",
+            }
         },
         deleteCert(index) {
             if (!confirm('You want to delete for real?')) { return }

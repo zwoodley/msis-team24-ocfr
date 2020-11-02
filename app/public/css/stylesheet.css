@@ -83,7 +83,22 @@ table {
     padding: 5px;
 }
 
+#readcertID {
+    background-color: lightgray;
+}
+
+#readcertName {
+    background-color: lightgray;
+}
+
+#readcertAgency {
+    background-color: lightgray;
+}
+
+#readexpDate {
+    background-color: lightgray;
+}
+
 .w-100 {
-  length:100%;
-  height:100%;
+    height: 100%;
 }

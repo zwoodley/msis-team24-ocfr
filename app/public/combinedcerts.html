@@ -13,42 +13,42 @@
 <body>
     <div class='fluid-container'>
         <div>
-          <nav>
-              <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                  <a class="navbar-brand" href="#">OCFR Team 24</a>
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <nav>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#">OCFR Team 24</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul class="navbar-nav mr-auto">
-                          <li class="nav-item">
-                              <a class="nav-link" href="index.html">Home</a>
-                          </li>
-                          <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Members
                 </a>
-                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                  <a class="dropdown-item" href="combinedMemberPages.html">Add, Edit and View Members</a>
-                                  <a class="dropdown-item" href="memberDetailed.html">View Detailed Member Record</a>
-                              </div>
-                          </li>
-                          <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="combinedMemberPages.html">Add, Edit and View Members</a>
+                                    <a class="dropdown-item" href="memberDetailed.html">View Detailed Member Record</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Certifications
                 </a>
-                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                  <a class="dropdown-item" href="combinedcerts.html">View Certification List</a>
-                                  <a class="dropdown-item" href="certificationDetailed.html">View Detailed Certification Record</a>
-                              </div>
-                          </li>
-                          <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reports</a>
-                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                  <a class="dropdown-item" href="reportExp.html">Expired Certifications</a>
-                                  <a class="dropdown-item" href="reportMSR.html">Members by Radio # and Station #</a>
-                              </div>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="combinedcerts.html">View Certification List</a>
+                                    <a class="dropdown-item" href="certificationDetailed.html">View Detailed Certification Record</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reports</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="reportExp.html">Expired Certifications</a>
+                                    <a class="dropdown-item" href="reportMSR.html">Members by Radio # and Station #</a>
+                                </div>
 
                     </div>
                 </nav>
@@ -105,15 +105,24 @@
                     <div class='col-sm-2 col-md-2 col-lg-2'>
                         <form method='post' v-on:submit.prevent='handleEditCert'>
                             <label>Certification ID</label>
-                            <input name='certID' type="text" id='certName' v-bind:value='activecertificationID'>
+                            <input name='readcertID' type="text" id='readcertID' v-bind:value='activecertificationID' readonly/>
+                            <p></p>
+                            <input name='certID' type="text" id='certID' v-model='editCert.certificationID'>
                             <label>Certification Name</label>
-                            <input name='certName' type="text" id='certName' v-bind:value='activecertName'>
+                            <input name='readcertName' type="text" id='readcertName' v-bind:value='activecertName' readonly/>
+                            <p></p>
+                            <input name='certName' type="text" id='certName' v-model='editCert.certName'>
                             <p></p>
                             <label>Agency</label>
-                            <input name='certAgency' type="text" id='certAgency' v-bind:value='activecertAgency'>
+                            <input name='readcertAgency' type="text" id='readcertAgency' v-bind:value='activecertAgency' readonly/>
+                            <p></p>
+                            <input name='certAgency' type="text" id='certAgency' v-model='editCert.certAgency'>
                             <p></p>
                             <label>Expiration Period</label>
-                            <input name='expDate' type="number" id='expDate' v-bind:value='activecertExp'><br>
+                            <input name='readexpDate' type="number" id='readexpDate' v-bind:value='activecertExp' readonly/>
+                            <p></p>
+                            <input name='expDate' type="number" id='expDate' v-model='editCert.certExp'>
+                            <br><br>
                             <br><button name='editCert' type="submit" id='editCert'>Edit Certification</button>
                             <p></p>
                         </form>
