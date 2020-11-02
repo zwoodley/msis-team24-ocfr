@@ -10,12 +10,7 @@ var app = new Vue({
             certAgency: "",
             certExp: "",
         },
-        editCert: {
-            certificationID: "",
-            certName: "",
-            certAgency: "",
-            certExp: "",
-        },
+        editCert: {},
     },
     computed: {
         activecertName() {
@@ -83,7 +78,7 @@ var app = new Vue({
                 alert("ERROR: No Certification selected!");
                 return false;
             }
-            this.editCert.certificationID = this.activeCert.certificationID;
+            //this.editCert.certificationID = this.activeCert.certificationID;
 
             fetch('api/certifications/updatecert.php', {
                     method: 'POST',
@@ -93,10 +88,10 @@ var app = new Vue({
                         "Accept": 'application/json'
                     }
                 })
-                .then(response => response.text())
-                .then(text => {
-                    console.log("Returned from editing certification", text);
-                    this.certifications = text;
+                .then(response => response.json())
+                .then(json => {
+                    console.log("Returned from editing certification", json);
+                    this.certifications = json;
                     this.editCert = this.editCertData();
                 })
         },
@@ -118,6 +113,7 @@ var app = new Vue({
                     console.log(this.certifications);
                 })
         },
+        // helped by :https://stackoverflow.com/questions/63285598/vue-js-how-to-delete-selected-row-by-delete-button-in-tbody\\
     },
     created() {
         fetch("api/certifications/")

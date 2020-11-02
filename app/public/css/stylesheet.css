@@ -58,3 +58,27 @@ table {
     width: 60px;
     font-size: 13px;
 }
+
+#addCert {
+    background-color: lightgray;
+    color: black;
+    border: none;
+    height: 60px;
+    width: 120px;
+    font-size: 15px;
+    border-color: black;
+    border-style: solid;
+    padding: 5;
+}
+
+#editCert {
+    background-color: lightgray;
+    color: black;
+    border: none;
+    height: 60px;
+    width: 120px;
+    font-size: 15px;
+    border-color: black;
+    border-style: solid;
+    padding: 5px;
+}
