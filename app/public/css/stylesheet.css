@@ -49,3 +49,8 @@ table.dataTable thead .sorting_desc_disabled:before {
 table {
     color: black;
 }
+
+.w-100 {
+width: 100%;
+height: 100%;
+}
