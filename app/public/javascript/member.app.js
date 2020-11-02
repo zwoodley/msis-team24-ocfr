@@ -90,7 +90,6 @@ var app = new Vue({
     methods: {
   handleNewMember( evt ){
     evt.preventDefault();
-
     fetch('api/member/create.php', {
       method:'POST',
       body:JSON.stringify(this.addMember),
@@ -108,16 +107,11 @@ var app = new Vue({
     })
     console.log("Creating...!");
     console.log(this.addMember);
-  },
+    },
   handleEditMember(evt) {
-      console.log('Edited Member submitted');
-      if (!this.activeMember) {
-          alert("ERROR: No Member selected!");
-          return false;
-      }
-      this.editMember.personID = this.activeMember.personID;
 
-      fetch('api/member/create.php', {
+  this.activeMember.personID = this.editMember.personID;
+      fetch('api/member/update.php', {
               method: 'POST',
               body: JSON.stringify(this.editMember),
               headers: {
@@ -126,13 +120,13 @@ var app = new Vue({
           })
           .then(response => response.json())
           .then(json => {
-              console.log("Returned from editing Member", json);
-              this.members = json;
-              this.editedMember = this.editMemberData();
+              console.log("Returned",json);
+              this.editMember = JSON;
+              this.editMember = this.editMemberdata
+
+
           });
-
   },
-
         newMemberData() {
             return {
               personID:"",
@@ -189,6 +183,7 @@ var app = new Vue({
         console.log(json)}
       );
       this.addMember = this.newMemberData();
-      this.editedMember = this.editMemberData();
+      this.activeMember = this.editMemberData();
+
     }
 });
