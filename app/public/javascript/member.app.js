@@ -202,7 +202,7 @@ var app = new Vue({
         console.log(json)}
       );
       this.addMember = this.newMemberData();
-      this.activeMember = this.editMemberData();
+      this.editMember = this.editMemberData();
 
     }
 });

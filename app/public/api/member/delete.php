@@ -11,7 +11,7 @@ $stmt = $db->prepare(
 );
 
 $stmt->execute([
-  $_POST['personID'],
+  $_POST['personID']
 ]);
 
 header('HTTP/1.1 303 See Other');
