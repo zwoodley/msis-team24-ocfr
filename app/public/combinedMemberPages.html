@@ -246,6 +246,9 @@
                     <td>{{m.cellPhone}}</td>
                     <td>{{m.workPhone}}</td>
                     <td>{{m.homePhone}}</td>
+                    <td>
+                        <button class="btn btn-danger" id='deletebutton' @click="deleteMember(m.personID)">Delete</button>
+                    </td>
                   </tr>
                 </tbody>
           </table>

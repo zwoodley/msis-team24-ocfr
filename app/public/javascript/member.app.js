@@ -1,7 +1,6 @@
 var app = new Vue({
     el: '#memberPage',
     data: {
-<<<<<<< HEAD
         members: [],
         addMember: {},
         activeMember: null,
@@ -87,13 +86,6 @@ var app = new Vue({
 
 
 
-=======
-//    editMode: false,
-        members: [],
-        addMember: {},
-        editMember: {},
-    //    editedMember: null,
->>>>>>> 56f0920ceed0764f24bb8488094f7fa819697d2e
     },
     methods: {
   handleNewMember( evt ){
@@ -128,20 +120,32 @@ var app = new Vue({
           })
           .then(response => response.json())
           .then(json => {
-<<<<<<< HEAD
               console.log("Returned",json);
               this.editMember = JSON;
               this.editMember = this.editMemberdata
 
-=======
-              console.log("Returned from post:", json);
-              this.members.push(json[0]);
-              this.members = json;
-              this.editMember = this.newMemberData();
->>>>>>> 56f0920ceed0764f24bb8488094f7fa819697d2e
 
           });
   },
+    deleteMember(index) {
+        if (!confirm('You want to delete for real?')) { return }
+        console.log('Deleting', index)
+
+        fetch('api/member/delete.php', {
+                method: 'POST',
+                body: JSON.stringify({ "personID": index }),
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8",
+                    "Accept": 'application/json'
+                }
+            })
+            .then(response => response.text())
+            .then(text => {
+                this.members = text;
+                console.log(this.members);
+            })
+    },
+
         newMemberData() {
             return {
               personID:"",
