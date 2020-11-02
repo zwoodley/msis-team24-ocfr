@@ -12,6 +12,7 @@ var app = new Vue({
         certName: "",
         certAgency: "",
         certExp: "",
+        certEnd: ""
       }
     }
   },
