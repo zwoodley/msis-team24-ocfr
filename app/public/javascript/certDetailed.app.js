@@ -16,10 +16,12 @@ var app = new Vue({
     }
   },
   created() {
-    fetch("api/records/certDetailed.php")
+    fetch("api/records/memberDetailed.php")
     .then( response => response.json() )
     .then( json => {
       this.mbrList = json;
+
+
 
       console.log(json)}
     );

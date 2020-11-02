@@ -1,29 +1,62 @@
-<!doctype html>
-<html lang="en">
-  <head>
+<!DOCTYPE html>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html>
+
+<head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/members.css">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="css/report.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <style>
+    <title>Member Controls</title>
+    <nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">OCFR Team 24</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    h1 {font-style: italic;
-      }
-      #newMembers{font-size:1;}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Members
+          </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="combinedMemberPages.html">Add, Edit and View Members</a>
+                            <a class="dropdown-item" href="memberDetailed.html">View Detailed Member Record</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Certifications
+          </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="combinedcerts.html">View Certification List</a>
+                            <a class="dropdown-item" href="certificationDetailed.html">View Detailed Certification Record</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reports</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="reportExp.html">Expired Certifications</a>
+                            <a class="dropdown-item" href="reportMSR.html">Members by Radio # and Station #</a>
+                        </div>
+                    </li>
+                </ul>
 
-    </style>
-
-
-  </head>
+                </div>
+        </nav>
+    </nav>
   <body>
 
     <div class="container-fluid" id="memberPage">
       <div class="row" >
         <div class="col-md-3">
 
-          <div style="text-align: center;">
+          <div>
           <h3>Add New Member</h3>
           </div>
 
@@ -52,8 +85,8 @@
 
               <div class="form-row">
                 <div class="form-group col-md-12">
-                  <label for="dob">Dob</label>
-                  <input type="text" v-model="addMember.dob"class="form-control" id="dob" placeholder="Doe">
+                  <label for="dob">DOB</label>
+                  <input type="text" v-model="addMember.dob"class="form-control" id="dob" placeholder="01-01-1990">
                 </div>
               </div>
 
@@ -221,7 +254,7 @@
   </div>
 
         <div class="col-md-3" style="font-size: 13px">
-          <div style="text-align: center;">
+          <div>
           <h3>Edit A Member</h3>
         </div>
         <div style="font-size: 13px;" class="col-12" id="memberPage">
@@ -247,6 +280,12 @@
               </div>
             </div>
 
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="dobEdit">DOB</label>
+                <input v-bind:value="editMember.dob" type="text"  class="form-control" id="dobEdit" placeholder="01-01-1990">
+              </div>
+            </div>
 
             <div class="form-row">
               <div class="form-group col-md-12">
