@@ -1,50 +1,9 @@
 var app = new Vue({
     el: '#memberPage',
     data: {
-//    editMode: false,
-        members: [{
-            personID:"",
-            fname:"",
-            lname:"",
-            position:"",
-            startDate:"",
-            isActive:"",
-            radioNum:"",
-            dob:"",
-            gender:"",
-            addStreet:"",
-            addCity:"",
-            addState:"",
-            addZip:"",
-            email:"",
-            cellPhone:"",
-            workPhone:"",
-            homePhone:"",
-            mainDepartment:"",
-            secondaryDepartment:""
-        }],
-        addMember: {
-          personID:"",
-          fname:"",
-          lname:"",
-          position:"",
-          startDate:"",
-          isActive:"",
-          radioNum:"",
-          dob:"",
-          gender:"",
-          addStreet:"",
-          addCity:"",
-          addState:"",
-          addZip:"",
-          email:"",
-          cellPhone:"",
-          workPhone:"",
-          homePhone:"",
-          mainDepartment:"",
-          secondaryDepartment:""
-
-        },
+        members: [],
+        addMember: {},
+        activeMember: null,
         editMember: {
           personID:"",
           fname:"",
@@ -64,18 +23,71 @@ var app = new Vue({
           workPhone:"",
           homePhone:"",
           mainDepartment:"",
-          secondaryDepartment:""
-
-        },
-    //    editedMember: null,
+          secondaryDepartment:""},
     },
-    computed: {},
+    computed: {
+      activeMemberPersonID() {
+          return this.activeMember ? this.activeMember.personID : ''
+      },
+        activeMemberFname() {
+            return this.activeMember ? this.activeMember.fname : ''
+        },
+        activeMemberLname() {
+            return this.activeMember ? this.activeMember.lname : ''
+        },
+        activeMemberposition() {
+            return this.activeMember ? this.activeMember.position : ''
+        },
+        activeMemberstartDate() {
+            return this.activeMember ? this.activeMember.startDate : ''
+        },
+        activeMemberisActive() {
+            return this.activeMember ? this.activeMember.isActive : ''
+        },
+        activeMemberRadioNum() {
+            return this.activeMember ? this.activeMember.radioNum : ''
+        },
+        activeMemberDob() {
+            return this.activeMember ? this.activeMember.dob : ''
+        },
+        activeMemberGender() {
+            return this.activeMember ? this.activeMember.gender : ''
+        },
+        activeMemberAddress() {
+            return this.activeMember ? this.activeMember.addStreet : ''
+        },
+        activeMemberCity() {
+            return this.activeMember ? this.activeMember.addCity : ''
+        },
+        activeMemberState() {
+            return this.activeMember ? this.activeMember.addState : ''
+        },
+        activeMemberZip() {
+            return this.activeMember ? this.activeMember.addZip : ''
+        },
+        activeMemberEmail() {
+            return this.activeMember ? this.activeMember.email : ''
+        },
+        activeMemberCellPhone() {
+            return this.activeMember ? this.activeMember.cellPhone : ''
+        },
+        activeMemberWorkPhone() {
+            return this.activeMember ? this.activeMember.workPhone : ''
+        },
+        activeMemberHomePhone() {
+            return this.activeMember ? this.activeMember.homePhone : ''
+        },
+        activeMemberMainDepartment() {
+            return this.activeMember ? this.activeMember.mainDepartment : ''
+        },
+        activeMemberSecondaryDepartment() {
+            return this.activeMember ? this.activeMember.secondaryDepartment : ''
+        },
+
+
+
+    },
     methods: {
-  //    saveData () {}, needs to be a post//
-  //  editMember (m) {
-  //    this.beforEditCache = m
-  //    this.editedMember = m
-//      },
   handleNewMember( evt ){
     evt.preventDefault();
 
@@ -97,47 +109,54 @@ var app = new Vue({
     console.log("Creating...!");
     console.log(this.addMember);
   },
-  handleEditMember( evt ) {
-    evt.preventDefault();
+  handleEditMember(evt) {
+      console.log('Edited Member submitted');
+      if (!this.activeMember) {
+          alert("ERROR: No Member selected!");
+          return false;
+      }
+      this.editMember.personID = this.activeMember.personID;
 
       fetch('api/member/create.php', {
               method: 'POST',
               body: JSON.stringify(this.editMember),
               headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                  "Content-Type": "application/json; charset=utf-8"
               }
           })
           .then(response => response.json())
           .then(json => {
-              console.log("Returned from post:", json);
-              this.members.push(json[0]);
-              this.members=json;
-              this.addMember = this.newMemberData();
-
+              console.log("Returned from editing Member", json);
+              this.members = json;
+              this.editedMember = this.editMemberData();
           });
-      console.log("Creating (POSTing)...!");
-      console.log(this.editMember);
+
   },
 
-  //      editMembers() {
-  //          fetch('api/member/create.php', {
-  //                  method: 'POST',
-  //                  body: JSON.stringify(this.editMember),
-  //                  headers: {
-  //                      "Content-Type": "application/json; charset=utf-8"
-  //                  }
-  //              })
-  //              .then(response => response.json())
-  //              .then(json => {
-//                    console.log("Returned from post:", json);
-//                    this.members.push(json[0]);
-//                    this.editMember = this.newMemberData();
-//                });
-//            console.log("Creating (POSTing)...!");
-//            console.log(this.editMember);
-//        },
         newMemberData() {
+            return {
+              personID:"",
+              fname:"",
+              lname:"",
+              position:"",
+              startDate:"",
+              isActive:"",
+              radioNum:"",
+              dob:"",
+              gender:"",
+              addStreet:"",
+              addCity:"",
+              addState:"",
+              addZip:"",
+              email:"",
+              cellPhone:"",
+              workPhone:"",
+              homePhone:"",
+              mainDepartment:"",
+              secondaryDepartment:""
+            }
+        },
+        editMemberData() {
             return {
               personID:"",
               fname:"",
@@ -170,5 +189,6 @@ var app = new Vue({
         console.log(json)}
       );
       this.addMember = this.newMemberData();
+      this.editedMember = this.editMemberData();
     }
 });
