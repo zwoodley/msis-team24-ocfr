@@ -10,12 +10,7 @@ var app = new Vue({
             certAgency: "",
             certExp: "",
         },
-        editCert: {
-            certificationID: "",
-            certName: "",
-            certAgency: "",
-            certExp: "",
-        },
+        editCert: {},
     },
     computed: {
         activecertName() {
@@ -56,17 +51,6 @@ var app = new Vue({
                 certExp: "",
             }
         },
-        created() {
-            fetch("api/certifications/index.php")
-                .then(response => response.json())
-                .then(json => {
-                    this.certifications = json;
-
-                    console.log(this.certification)
-                });
-            this.addCert = this.newCertData();
-            this.editCert = this.editCertData();
-        },
         handleNewCert(evt) {
 
             fetch('api/certifications/addcert.php', {
@@ -94,7 +78,7 @@ var app = new Vue({
                 alert("ERROR: No Certification selected!");
                 return false;
             }
-            this.editCert.certificationID = this.activeCert.certificationID;
+            //this.editCert.certificationID = this.activeCert.certificationID;
 
             fetch('api/certifications/updatecert.php', {
                     method: 'POST',
@@ -111,20 +95,35 @@ var app = new Vue({
                     this.editCert = this.editCertData();
                 })
         },
+        deleteCert(index) {
+            if (!confirm('You want to delete for real?')) { return }
+            console.log('Deleting', index)
+
+            fetch('api/certifications/deletecert.php', {
+                    method: 'POST',
+                    body: JSON.stringify({ "certificationID": index }),
+                    headers: {
+                        "Content-Type": "application/json; charset=utf-8",
+                        "Accept": 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(json => {
+                    this.certifications = json;
+                    console.log(this.certifications);
+                })
+        },
+        // helped by :https://stackoverflow.com/questions/63285598/vue-js-how-to-delete-selected-row-by-delete-button-in-tbody\\
     },
-    deleteCertification() {
-        fetch('api/certifications/deletecert.php', {
-                method: 'POST',
-                body: JSON.stringify(this.certification),
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8",
-                    "Accept": 'application/json'
-                }
-            })
+    created() {
+        fetch("api/certifications/")
             .then(response => response.json())
             .then(json => {
                 this.certifications = json;
-                console.log(this.certifications);
-            })
+
+                console.log(this.certifications)
+            });
+        this.addCert = this.newCertData();
+        this.editCert = this.editCertData();
     },
 });

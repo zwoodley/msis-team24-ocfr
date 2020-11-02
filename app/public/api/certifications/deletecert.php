@@ -6,7 +6,7 @@ require 'common.php';
 $db = DbConnection::getConnection();
 
 
-$stmt = $db->query(
+$stmt = $db->prepare(
   'DELETE FROM certification WHERE certificationID = ?'
 );
 
@@ -15,4 +15,5 @@ $stmt->execute([
 ]);
 
 header('HTTP/1.1 303 See Other');
-header('Location: ../certifications/');
+header('Location: ../certifications/?certificationID=' .$_POST['certificationID']);
+?>

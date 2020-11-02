@@ -65,15 +65,16 @@
         </div>
         <div class='fluid-container'>
             <div id='certifications'>
+                <h2>Certification List</h2>
                 <div class='row'>
                     <div class='col-sm-8 col-md-8 col-lg-8'>
                         <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th class='th-sm'>Certification ID</th>
+                                    <th class='th-sm'> ID </th>
                                     <th class='th-sm'>Certification Name</th>
                                     <th class='th-sm'>Agency</th>
-                                    <th class='th-sm'>Expiration Date</th>
+                                    <th class='th-sm'>Expiration Period</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -82,6 +83,9 @@
                                     <td>{{certification.certName}}</td>
                                     <td>{{certification.certAgency}}</td>
                                     <td>{{certification.certExp}} years</td>
+                                    <td>
+                                        <button class="btn btn-danger" id='deletebutton' @click="deleteCert(certification.certificationID)">Delete</button>
+                                    </td>
                                 </tr>
 
                             </tbody>
@@ -102,13 +106,13 @@
                             <label>Agency</label>
                             <input name='certAgency' type="text" id='certAgency' v-model='addCert.certAgency'>
                             <p></p>
-                            <label>Expiration Date</label>
-                            <input name='expDate' type="date" id='expDate' v-model='addCert.certExp'><br>
+                            <label>Expiration Period</label>
+                            <input name='expDate' type="number" id='expDate' v-model='addCert.certExp'><br>
                             <br><button name='addCert' type="submit" id='addCert'>Add Certification</button>
                         </form>
                     </div>
                     <div class='col-sm-2 col-md-2 col-lg-2'>
-                        <form v-on:submit.prevent='handleEditCert'>
+                        <form method='post' v-on:submit.prevent='handleEditCert'>
                             <label>Certification ID</label>
                             <input name='certID' type="text" id='certName' v-bind:value='activecertificationID'>
                             <label>Certification Name</label>
@@ -117,11 +121,10 @@
                             <label>Agency</label>
                             <input name='certAgency' type="text" id='certAgency' v-bind:value='activecertAgency'>
                             <p></p>
-                            <label>Expiration Date</label>
-                            <input name='expDate' type="date" id='expDate' v-bind:value='activecertExp'><br>
-                            <br><button name='editCert' type="submit" id='editCert'>Edit</button>
+                            <label>Expiration Period</label>
+                            <input name='expDate' type="number" id='expDate' v-bind:value='activecertExp'><br>
+                            <br><button name='editCert' type="submit" id='editCert'>Edit Certification</button>
                             <p></p>
-                            <br><button name='deleteCert' v-on:click="deleteCertification(cID)" id='deleteCert'>Delete</button>
                         </form>
                     </div>
                 </div>
