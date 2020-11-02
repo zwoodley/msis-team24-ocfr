@@ -204,6 +204,7 @@
             <table id="memberTable" class="table">
                 <thead class="thead-dark">
                   <tr>
+                    <th> </th>
                     <th>ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
@@ -227,6 +228,9 @@
                 </thead>
                 <tbody>
                   <tr v-for="m in members"  v-on:click="activeMember = m" id="memberPage">
+                    <td>
+                        <button class="btn btn-danger" id='deletebutton' @click="deleteMember(m.personID)">Delete</button>
+                    </td>
                     <td>{{m.personID}}</td>
                     <td>{{m.fname}}</td>
                     <td>{{m.lname}}</td>
@@ -246,9 +250,6 @@
                     <td>{{m.cellPhone}}</td>
                     <td>{{m.workPhone}}</td>
                     <td>{{m.homePhone}}</td>
-                    <td>
-                        <button class="btn btn-danger" id='deletebutton' @click="deleteMember(m.personID)">Delete</button>
-                    </td>
                   </tr>
                 </tbody>
           </table>
