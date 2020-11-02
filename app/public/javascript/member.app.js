@@ -1,22 +1,103 @@
 var app = new Vue({
     el: '#memberPage',
     data: {
+<<<<<<< HEAD
+        members: [],
+        addMember: {},
+        activeMember: null,
+        editMember: {
+          personID:"",
+          fname:"",
+          lname:"",
+          position:"",
+          startDate:"",
+          isActive:"",
+          radioNum:"",
+          dob:"",
+          gender:"",
+          addStreet:"",
+          addCity:"",
+          addState:"",
+          addZip:"",
+          email:"",
+          cellPhone:"",
+          workPhone:"",
+          homePhone:"",
+          mainDepartment:"",
+          secondaryDepartment:""},
+    },
+    computed: {
+      activeMemberPersonID() {
+          return this.activeMember ? this.activeMember.personID : ''
+      },
+        activeMemberFname() {
+            return this.activeMember ? this.activeMember.fname : ''
+        },
+        activeMemberLname() {
+            return this.activeMember ? this.activeMember.lname : ''
+        },
+        activeMemberposition() {
+            return this.activeMember ? this.activeMember.position : ''
+        },
+        activeMemberstartDate() {
+            return this.activeMember ? this.activeMember.startDate : ''
+        },
+        activeMemberisActive() {
+            return this.activeMember ? this.activeMember.isActive : ''
+        },
+        activeMemberRadioNum() {
+            return this.activeMember ? this.activeMember.radioNum : ''
+        },
+        activeMemberDob() {
+            return this.activeMember ? this.activeMember.dob : ''
+        },
+        activeMemberGender() {
+            return this.activeMember ? this.activeMember.gender : ''
+        },
+        activeMemberAddress() {
+            return this.activeMember ? this.activeMember.addStreet : ''
+        },
+        activeMemberCity() {
+            return this.activeMember ? this.activeMember.addCity : ''
+        },
+        activeMemberState() {
+            return this.activeMember ? this.activeMember.addState : ''
+        },
+        activeMemberZip() {
+            return this.activeMember ? this.activeMember.addZip : ''
+        },
+        activeMemberEmail() {
+            return this.activeMember ? this.activeMember.email : ''
+        },
+        activeMemberCellPhone() {
+            return this.activeMember ? this.activeMember.cellPhone : ''
+        },
+        activeMemberWorkPhone() {
+            return this.activeMember ? this.activeMember.workPhone : ''
+        },
+        activeMemberHomePhone() {
+            return this.activeMember ? this.activeMember.homePhone : ''
+        },
+        activeMemberMainDepartment() {
+            return this.activeMember ? this.activeMember.mainDepartment : ''
+        },
+        activeMemberSecondaryDepartment() {
+            return this.activeMember ? this.activeMember.secondaryDepartment : ''
+        },
+
+
+
+=======
 //    editMode: false,
         members: [],
         addMember: {},
         editMember: {},
     //    editedMember: null,
+>>>>>>> 56f0920ceed0764f24bb8488094f7fa819697d2e
     },
-    computed: {},
     methods: {
-  //    saveData () {}, needs to be a post//
-  //  editMember (m) {
-  //    this.beforEditCache = m
-  //    this.editedMember = m
-//      },
   handleNewMember( evt ){
     evt.preventDefault();
-
     fetch('api/member/create.php', {
       method:'POST',
       body:JSON.stringify(this.addMember),
@@ -34,48 +115,57 @@ var app = new Vue({
     })
     console.log("Creating...!");
     console.log(this.addMember);
-  },
-  handleEditMember( evt ) {
-    evt.preventDefault();
+    },
+  handleEditMember(evt) {
 
-      fetch('api/member/create.php', {
+  this.activeMember.personID = this.editMember.personID;
+      fetch('api/member/update.php', {
               method: 'POST',
               body: JSON.stringify(this.editMember),
               headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                  "Content-Type": "application/json; charset=utf-8"
               }
           })
           .then(response => response.json())
           .then(json => {
+<<<<<<< HEAD
+              console.log("Returned",json);
+              this.editMember = JSON;
+              this.editMember = this.editMemberdata
+
+=======
               console.log("Returned from post:", json);
               this.members.push(json[0]);
               this.members = json;
               this.editMember = this.newMemberData();
+>>>>>>> 56f0920ceed0764f24bb8488094f7fa819697d2e
 
           });
-      console.log("Creating (POSTing)...!");
-      console.log(this.editMember);
   },
-
-  //      editMembers() {
-  //          fetch('api/member/create.php', {
-  //                  method: 'POST',
-  //                  body: JSON.stringify(this.editMember),
-  //                  headers: {
-  //                      "Content-Type": "application/json; charset=utf-8"
-  //                  }
-  //              })
-  //              .then(response => response.json())
-  //              .then(json => {
-//                    console.log("Returned from post:", json);
-//                    this.members.push(json[0]);
-//                    this.editMember = this.newMemberData();
-//                });
-//            console.log("Creating (POSTing)...!");
-//            console.log(this.editMember);
-//        },
         newMemberData() {
+            return {
+              personID:"",
+              fname:"",
+              lname:"",
+              position:"",
+              startDate:"",
+              isActive:"",
+              radioNum:"",
+              dob:"",
+              gender:"",
+              addStreet:"",
+              addCity:"",
+              addState:"",
+              addZip:"",
+              email:"",
+              cellPhone:"",
+              workPhone:"",
+              homePhone:"",
+              mainDepartment:"",
+              secondaryDepartment:""
+            }
+        },
+        editMemberData() {
             return {
               personID:"",
               fname:"",
@@ -108,5 +198,7 @@ var app = new Vue({
         console.log(json)}
       );
       this.addMember = this.newMemberData();
+      this.activeMember = this.editMemberData();
+
     }
 });
