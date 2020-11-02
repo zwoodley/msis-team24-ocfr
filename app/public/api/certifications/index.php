@@ -7,8 +7,7 @@ $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
 $sql = 'SELECT certificationID, certName, certAgency, certExp
-        FROM certification
-        ORDER BY certificationID';
+        FROM certification';
 $vars = [];
 
 //if (isset($_GET['guid'])) {
