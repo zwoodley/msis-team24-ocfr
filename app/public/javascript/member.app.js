@@ -108,21 +108,22 @@ var app = new Vue({
     console.log("Creating...!");
     console.log(this.addMember);
     },
-  handleEditMember(evt) {
+  handleEditMember() {
 
-  this.activeMember.personID = this.editMember.personID;
+  this.editMember.personID = this.activeMember.personID;
       fetch('api/member/update.php', {
               method: 'POST',
               body: JSON.stringify(this.editMember),
               headers: {
-                  "Content-Type": "application/json; charset=utf-8"
+                "Content-Type": "application/json; charset=utf-8",
+                "Accept": 'application/json'
               }
           })
           .then(response => response.json())
           .then(json => {
               console.log("Returned",json);
-              this.editMember = JSON;
-              this.editMember = this.editMemberdata
+              this.members = JSON;
+              this.editMember = this.editMemberdata();
 
 
           });

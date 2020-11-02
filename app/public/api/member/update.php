@@ -4,7 +4,8 @@ require 'common.php';
 
 $db = DbConnection::getConnection();
 
-$stmt = $db->prepare('UPDATE person
+$stmt = $db->prepare(
+  'UPDATE person
   SET fname = ?,
   lname = ?,
   position = ?,
@@ -23,8 +24,8 @@ $stmt = $db->prepare('UPDATE person
   homePhone = ?,
   mainDepartment = ?,
   secondaryDepartment = ?
-  WHERE personID = ?');
-
+  WHERE personID = ?'
+);
 
 $stmt->execute ([
   $_POST['fname'],
