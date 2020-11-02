@@ -48,6 +48,7 @@ var app = new Vue({
                     console.log("Returned from post:", json);
 
                     this.certifications.push(json[0]);
+                    this.certifications = json;
                     this.addCert = this.newCertData();
                 });
 
