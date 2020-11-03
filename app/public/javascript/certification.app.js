@@ -27,12 +27,13 @@ var app = new Vue({
     },
     methods: {
         fetchCertification() {
-            return {
-                certificationID: "",
-                certName: "",
-                certAgency: "",
-                certExp: "",
-            }
+            fetch("api/certifications/")
+                .then(response => response.json())
+                .then(json => {
+                    this.certifications = json;
+
+                    console.log(this.certifications)
+                });
         },
         handleNewCert(evt) {
 
@@ -116,13 +117,7 @@ var app = new Vue({
         // helped by :https://stackoverflow.com/questions/63285598/vue-js-how-to-delete-selected-row-by-delete-button-in-tbody\\
     },
     created() {
-        fetch("api/certifications/")
-            .then(response => response.json())
-            .then(json => {
-                this.certifications = json;
-
-                console.log(this.certifications)
-            });
+        this.fetchCertification();
         this.addCert = this.newCertData();
         this.editCert = this.editCertData();
     },
